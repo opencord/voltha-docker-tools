@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cad0fb5_9cdd5c4c",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000011
+      },
+      "writtenOn": "2020-01-27T15:32:30Z",
+      "side": 1,
+      "message": "missing golangci-lint?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 43
+      },
+      "revId": "607f1e830c2011dd1b47f9c3383db1a26411ee61",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    }
+  ]
+}
