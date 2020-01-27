@@ -22,6 +22,30 @@
       "revId": "607f1e830c2011dd1b47f9c3383db1a26411ee61",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eeb2299_b212390f",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-01-27T15:34:35Z",
+      "side": 1,
+      "message": "golangci-lint is wip/untested, was planning to add it once it\u0027s been shown to work.",
+      "parentUuid": "9cad0fb5_9cdd5c4c",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 43
+      },
+      "revId": "607f1e830c2011dd1b47f9c3383db1a26411ee61",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
     }
   ]
 }
