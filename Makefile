@@ -35,15 +35,15 @@ endif
 
 DOCKER                     ?= docker
 DOCKER_EXTRA_ARGS          ?=
-DOCKER_REGISTRY            ?= voltha
-DOCKER_REPOSITORY          ?= voltha-ci-tools
-IMAGENAME                  := ${DOCKER_REGISTRY}/${DOCKER_REPOSITORY}
+DOCKER_REGISTRY            ?=
+DOCKER_REPOSITORY          ?= voltha/
+IMAGENAME                  := ${DOCKER_REGISTRY}${DOCKER_REPOSITORY}voltha-ci-tools
 
 ## Docker labels. Only set ref and commit date if committed
 DOCKER_LABEL_VCS_URL       = $(shell git remote get-url "$(shell git remote)" 2>/dev/null)
-DOCKER_LABEL_VCS_REF       =  $(shell git rev-parse HEAD)
+DOCKER_LABEL_VCS_REF       = $(shell git rev-parse HEAD)
 DOCKER_LABEL_BUILD_DATE    = $(shell date -u "+%Y-%m-%dT%H:%M:%SZ")
-DOCKER_LABEL_COMMIT_DATE   =  $(shell git show -s --format=%cd --date=iso-strict HEAD)
+DOCKER_LABEL_COMMIT_DATE   = $(shell git show -s --format=%cd --date=iso-strict HEAD)
 
 DOCKER_BUILD_ARGS ?= \
 	${DOCKER_EXTRA_ARGS} \
@@ -57,7 +57,7 @@ DOCKER_BUILD_ARGS ?= \
 ## runnable tool containers
 HADOLINT = ${DOCKER} run --rm --user $$(id -u):$$(id -g) -v $$PWD:/app ${IMAGENAME}:${VERSION}-hadolint hadolint
 
-lint: docker-lint docker-build
+lint: docker-lint
 
 docker-lint: hadolint
 	@echo "Linting Dockerfiles..."
