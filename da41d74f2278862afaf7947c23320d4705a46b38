@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4386477_3ccc7741",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000011
+      },
+      "writtenOn": "2020-01-28T16:59:11Z",
+      "side": 1,
+      "message": "Are these used separately from processing `go test` output in a pipeline?  How are the containers started? \n\nI realize we don\u0027t want to combine many tools into a single container, but it seems like these would be closely coupled with the go version.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 41
+      },
+      "revId": "da41d74f2278862afaf7947c23320d4705a46b38",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e71c6b84_750d7d9e",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000011
+      },
+      "writtenOn": "2020-01-28T16:59:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1eeb2299_b212390f",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 43
+      },
+      "revId": "da41d74f2278862afaf7947c23320d4705a46b38",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    }
+  ]
+}
