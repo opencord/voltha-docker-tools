@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff1b6a3b_7aca702f",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-01-28T17:10:53Z",
+      "side": 1,
+      "message": "The README has some examples for how containers are run.\n\nThe tight coupling between all these tools is what the (arguably somewhat complicated) versioning tries to solve.\nWhen running these tools, a single version is specified (the VERSION of this repo), and all related containers are pulled as needed.\n\nSome of these tools could arguably be in the same container, an offline discussion might be better for that.",
+      "parentUuid": "d4386477_3ccc7741",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 41
+      },
+      "revId": "da41d74f2278862afaf7947c23320d4705a46b38",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e71c6b84_750d7d9e",
         "filename": "Makefile",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "1eeb2299_b212390f",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 43
+      },
+      "revId": "da41d74f2278862afaf7947c23320d4705a46b38",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "045c0fa0_4b2acff4",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-01-28T17:10:53Z",
+      "side": 1,
+      "message": "Not sure what you mean here.",
+      "parentUuid": "e71c6b84_750d7d9e",
       "range": {
         "startLine": 99,
         "startChar": 0,
