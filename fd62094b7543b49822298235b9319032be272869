@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "538d97b6_b414541a",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000011
+      },
+      "writtenOn": "2020-01-28T20:30:17Z",
+      "side": 1,
+      "message": "It\u0027s a override so I can do a \n\n    make DOCKER\u003decho docker-build\n\nAnd have it just print all the commands",
+      "parentUuid": "249a18ec_a99d0d45",
+      "revId": "fd62094b7543b49822298235b9319032be272869",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddacb6af_03244015",
         "filename": "Makefile",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-01-28T20:16:01Z",
       "side": 1,
       "message": "Why does `lint` require `docker-build`?  \ndocker-build was already added as a make target in ci-management.",
+      "revId": "fd62094b7543b49822298235b9319032be272869",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12e3fa26_826f2efb",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000011
+      },
+      "writtenOn": "2020-01-28T20:30:17Z",
+      "side": 1,
+      "message": "Either way would work - if you\u0027d prefer that we can make that change.",
+      "parentUuid": "ddacb6af_03244015",
       "revId": "fd62094b7543b49822298235b9319032be272869",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": false
