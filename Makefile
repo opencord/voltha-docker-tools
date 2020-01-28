@@ -33,16 +33,17 @@ ifneq ($(shell git status --porcelain | wc -l | sed -e 's/ //g'),0)
     VERSION                = latest
 endif
 
+DOCKER                     ?= docker
 DOCKER_EXTRA_ARGS          ?=
 DOCKER_REGISTRY            ?= voltha
 DOCKER_REPOSITORY          ?= voltha-ci-tools
-IMAGENAME                  = ${DOCKER_REGISTRY}/${DOCKER_REPOSITORY}
+IMAGENAME                  := ${DOCKER_REGISTRY}/${DOCKER_REPOSITORY}
 
 ## Docker labels. Only set ref and commit date if committed
-DOCKER_LABEL_VCS_URL       ?= $(shell git remote get-url "$(shell git remote)" 2>/dev/null)
-DOCKER_LABEL_VCS_REF       = $(shell git rev-parse HEAD)
-DOCKER_LABEL_BUILD_DATE    ?= $(shell date -u "+%Y-%m-%dT%H:%M:%SZ")
-DOCKER_LABEL_COMMIT_DATE   = $(shell git show -s --format=%cd --date=iso-strict HEAD)
+DOCKER_LABEL_VCS_URL       = $(shell git remote get-url "$(shell git remote)" 2>/dev/null)
+DOCKER_LABEL_VCS_REF       =  $(shell git rev-parse HEAD)
+DOCKER_LABEL_BUILD_DATE    = $(shell date -u "+%Y-%m-%dT%H:%M:%SZ")
+DOCKER_LABEL_COMMIT_DATE   =  $(shell git show -s --format=%cd --date=iso-strict HEAD)
 
 DOCKER_BUILD_ARGS ?= \
 	${DOCKER_EXTRA_ARGS} \
@@ -54,9 +55,9 @@ DOCKER_BUILD_ARGS ?= \
 	--build-arg org_opencord_vcs_dirty="${DOCKER_LABEL_VCS_DIRTY}"
 
 ## runnable tool containers
-HADOLINT = docker run --rm --user $$(id -u):$$(id -g) -v $$PWD:/app ${IMAGENAME}:${VERSION}-hadolint hadolint
+HADOLINT = ${DOCKER} run --rm --user $$(id -u):$$(id -g) -v $$PWD:/app ${IMAGENAME}:${VERSION}-hadolint hadolint
 
-lint: docker-lint
+lint: docker-lint docker-build
 
 docker-lint: hadolint
 	@echo "Linting Dockerfiles..."
@@ -69,42 +70,42 @@ build: docker-build
 docker-build: go-junit-report gocover-cobertura golang golangci-lint hadolint protoc
 
 go-junit-report:
-	docker build ${DOCKER_BUILD_ARGS} \
+	${DOCKER} build ${DOCKER_BUILD_ARGS} \
 	--build-arg GO_JUNIT_REPORT_VERSION=${GO_JUNIT_REPORT_VERSION} \
 	-t ${IMAGENAME}:${VERSION}-go-junit-report \
 	-t ${IMAGENAME}:latest-go-junit-report \
 	-f docker/go-junit-report.Dockerfile .
 
 gocover-cobertura:
-	docker build ${DOCKER_BUILD_ARGS} \
+	${DOCKER} build ${DOCKER_BUILD_ARGS} \
 	--build-arg GOCOVER_COBERTURA_VERSION=${GOCOVER_COBERTURA_VERSION} \
 	-t ${IMAGENAME}:${VERSION}-gocover-cobertura \
 	-t ${IMAGENAME}:latest-gocover-cobertura \
 	-f docker/gocover-cobertura.Dockerfile .
 
 golang:
-	docker build ${DOCKER_BUILD_ARGS} \
+	${DOCKER} build ${DOCKER_BUILD_ARGS} \
 	--build-arg GOLANG_VERSION=${GOLANG_VERSION} \
 	-t ${IMAGENAME}:${VERSION}-golang \
 	-t ${IMAGENAME}:latest-golang \
 	-f docker/golang.Dockerfile .
 
 golangci-lint:
-	docker build ${DOCKER_BUILD_ARGS} \
+	${DOCKER} build ${DOCKER_BUILD_ARGS} \
 	--build-arg GOLANGCI_LINT_VERSION=${GOLANGCI_LINT_VERSION} \
 	-t ${IMAGENAME}:${VERSION}-golangci-lint \
 	-t ${IMAGENAME}:latest-golangci-lint \
 	-f docker/golangci-lint.Dockerfile .
 
 hadolint:
-	docker build ${DOCKER_BUILD_ARGS} \
+	${DOCKER} build ${DOCKER_BUILD_ARGS} \
     --build-arg HADOLINT_VERSION=${HADOLINT_VERSION} \
     -t ${IMAGENAME}:${VERSION}-hadolint \
     -t ${IMAGENAME}:latest-hadolint \
     -f docker/hadolint.Dockerfile .
 
 protoc:
-	docker build ${DOCKER_BUILD_ARGS} \
+	${DOCKER} build ${DOCKER_BUILD_ARGS} \
 	--build-arg PROTOC_VERSION=${PROTOC_VERSION} \
 	--build-arg PROTOC_SHA256SUM=${PROTOC_SHA256SUM} \
 	--build-arg PROTOC_GEN_GO_VERSION=${PROTOC_GEN_GO_VERSION} \
@@ -117,10 +118,10 @@ ifneq (false,$(DOCKER_LABEL_VCS_DIRTY))
 	@echo "Local repo is dirty.  Refusing to push."
 	@exit 1
 endif
-	docker push ${IMAGENAME}:${VERSION}-go-junit-report
-	docker push ${IMAGENAME}:${VERSION}-gocover-cobertura
-	docker push ${IMAGENAME}:${VERSION}-golang
-	docker push ${IMAGENAME}:${VERSION}-golangci-lint
-	docker push ${IMAGENAME}:${VERSION}-hadolint
-	docker push ${IMAGENAME}:${VERSION}-protoc
+	${DOCKER} push ${IMAGENAME}:${VERSION}-go-junit-report
+	${DOCKER} push ${IMAGENAME}:${VERSION}-gocover-cobertura
+	${DOCKER} push ${IMAGENAME}:${VERSION}-golang
+	${DOCKER} push ${IMAGENAME}:${VERSION}-golangci-lint
+	${DOCKER} push ${IMAGENAME}:${VERSION}-hadolint
+	${DOCKER} push ${IMAGENAME}:${VERSION}-protoc
 
