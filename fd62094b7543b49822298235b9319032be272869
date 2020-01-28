@@ -69,6 +69,24 @@
       "revId": "fd62094b7543b49822298235b9319032be272869",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8744fcc_14fe1ea8",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-01-28T20:35:10Z",
+      "side": 1,
+      "message": "Already changed \u0026 merged per https://gerrit.opencord.org/#/c/17172/1/jjb/verify/voltha-docker-tools.yaml",
+      "parentUuid": "12e3fa26_826f2efb",
+      "revId": "fd62094b7543b49822298235b9319032be272869",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
     }
   ]
 }
