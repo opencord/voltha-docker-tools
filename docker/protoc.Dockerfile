@@ -26,7 +26,8 @@ RUN GO111MODULE=on go get -u github.com/golang/protobuf/protoc-gen-go@v$PROTOC_G
 RUN mkdir -p /tmp/protoc3 && \
     wget -O /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip https://github.com/google/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip && \
     [ "$(sha256sum /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip)" = "${PROTOC_SHA256SUM}  /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip" ] && \
-    unzip /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip -d /tmp/protoc3
+    unzip /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip -d /tmp/protoc3 && \
+    chmod -R a+rx /tmp/protoc3/
 
 
 FROM busybox:1.31.1-glibc
@@ -39,9 +40,6 @@ ENV LD_LIBRARY_PATH=/usr/lib
 # protoc & well-known-type definitions
 COPY --from=build /tmp/protoc3/bin/* /usr/local/bin/
 COPY --from=build /tmp/protoc3/include/ /usr/local/include/
-# fix permissions so non-root can use
-RUN chmod -R a+rx /usr/local/bin/protoc && \
-    chmod -R a+rX /usr/local/include/
 
 # copy protoc-gen-go
 COPY --from=build /go/bin/* /usr/local/bin/
