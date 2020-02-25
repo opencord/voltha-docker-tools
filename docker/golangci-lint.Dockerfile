@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ARG GOLANGCI_LINT_VERSION
-FROM golangci/golangci-lint:v$GOLANGCI_LINT_VERSION
+FROM golangci/golangci-lint:v$GOLANGCI_LINT_VERSION-alpine
 
 RUN mkdir -m 777 /.cache /go/pkg
 

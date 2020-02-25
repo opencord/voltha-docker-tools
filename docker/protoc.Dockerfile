@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM golang:1.13.5-alpine as build
+FROM golang:1.13.8-alpine as build
 
 ARG PROTOC_VERSION
 ARG PROTOC_GEN_GO_VERSION

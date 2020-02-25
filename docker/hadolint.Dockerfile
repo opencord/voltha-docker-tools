@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ARG HADOLINT_VERSION
-FROM hadolint/hadolint:v$HADOLINT_VERSION
+FROM hadolint/hadolint:v$HADOLINT_VERSION-alpine
 
 WORKDIR /app
 
