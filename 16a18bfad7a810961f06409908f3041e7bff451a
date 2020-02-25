@@ -22,6 +22,30 @@
       "revId": "16a18bfad7a810961f06409908f3041e7bff451a",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28d38b9f_54bb0bb8",
+        "filename": "docker/gocover-cobertura.Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-02-25T22:44:15Z",
+      "side": 1,
+      "message": "Since this is the build container, it\u0027s version doesn\u0027t really need to be bumped (you could think that the version of golang that _this_ repo uses is being bumped.)\n\nI had considered updating the containers to accept all these params from the Makefile, but decided against adding that complexity for now.",
+      "parentUuid": "9168dd7d_e746997a",
+      "range": {
+        "startLine": 15,
+        "startChar": 12,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "16a18bfad7a810961f06409908f3041e7bff451a",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
     }
   ]
 }
