@@ -15,13 +15,17 @@
 FROM golang:1.13.8-alpine as build
 
 ARG PROTOC_VERSION
-ARG PROTOC_GEN_GO_VERSION
 ARG PROTOC_SHA256SUM
+ARG PROTOC_GEN_GO_VERSION
+ARG PROTOC_GEN_GRPC_GATEWAY_VERSION
 
 RUN apk add --no-cache libatomic=9.2.0-r3 musl=1.1.24-r0
 
 # download & compile this specific version of protoc-gen-go
-RUN GO111MODULE=on go get -u github.com/golang/protobuf/protoc-gen-go@v$PROTOC_GEN_GO_VERSION
+RUN GO111MODULE=on CGO_ENABLED=0 go get -u \
+    github.com/golang/protobuf/protoc-gen-go@v$PROTOC_GEN_GO_VERSION \
+    github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v$PROTOC_GEN_GRPC_GATEWAY_VERSION \
+    github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@v$PROTOC_GEN_GRPC_GATEWAY_VERSION
 
 RUN mkdir -p /tmp/protoc3 && \
     wget -O /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip https://github.com/google/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip && \
@@ -41,7 +45,7 @@ ENV LD_LIBRARY_PATH=/usr/lib
 COPY --from=build /tmp/protoc3/bin/* /usr/local/bin/
 COPY --from=build /tmp/protoc3/include/ /usr/local/include/
 
-# copy protoc-gen-go
+# copy protoc-gen-go, protoc-gen-grpc-gateway, and protoc-gen-swagger
 COPY --from=build /go/bin/* /usr/local/bin/
 
 WORKDIR /app
@@ -55,6 +59,7 @@ ARG org_opencord_vcs_commit_date=unknown
 ARG org_opencord_vcs_dirty=unknown
 ARG PROTOC_VERSION=unknown
 ARG PROTOC_GEN_GO_VERSION=unknown
+ARG PROTOC_GEN_GRPC_GATEWAY_VERSION=unknown
 
 LABEL org.label-schema.schema-version=1.0 \
       org.label-schema.name=voltha-protoc \
@@ -65,4 +70,5 @@ LABEL org.label-schema.schema-version=1.0 \
       org.opencord.vcs-commit-date=$org_opencord_vcs_commit_date \
       org.opencord.vcs-dirty=$org_opencord_vcs_dirty \
       org.opencord.protoc-version=$PROTOC_VERSION \
-      org.opencord.protoc-gen-go-version=$PROTOC_GEN_GO_VERSION
+      org.opencord.protoc-gen-go-version=$PROTOC_GEN_GO_VERSION \
+      org.opencord.protoc-gen-grpc-gateway-version=$PROTOC_GEN_GRPC_GATEWAY_VERSION

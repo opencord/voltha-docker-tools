@@ -16,15 +16,16 @@
 SHELL = bash -e -o pipefail
 
 ## Variables
-VERSION                   ?= $(shell cat ./VERSION)
-GO_JUNIT_REPORT_VERSION   ?= "0.9.1"
-GOCOVER_COBERTURA_VERSION ?= "v0.0.0-20180217150009-aaee18c8195c"
-GOLANG_VERSION            ?= "1.13.8"
-GOLANGCI_LINT_VERSION     ?= "1.23.6"
-HADOLINT_VERSION          ?= "1.17.5"
-PROTOC_VERSION            ?= "3.7.0"
-PROTOC_SHA256SUM          ?= "a1b8ed22d6dc53c5b8680a6f1760a305b33ef471bece482e92728f00ba2a2969"
-PROTOC_GEN_GO_VERSION     ?= "1.3.1"
+VERSION                         ?= $(shell cat ./VERSION)
+GO_JUNIT_REPORT_VERSION         ?= "0.9.1"
+GOCOVER_COBERTURA_VERSION       ?= "v0.0.0-20180217150009-aaee18c8195c"
+GOLANG_VERSION                  ?= "1.13.8"
+GOLANGCI_LINT_VERSION           ?= "1.23.6"
+HADOLINT_VERSION                ?= "1.17.5"
+PROTOC_VERSION                  ?= "3.7.0"
+PROTOC_SHA256SUM                ?= "a1b8ed22d6dc53c5b8680a6f1760a305b33ef471bece482e92728f00ba2a2969"
+PROTOC_GEN_GO_VERSION           ?= "1.3.2"
+PROTOC_GEN_GRPC_GATEWAY_VERSION ?= "1.12.2"
 
 # Docker related
 DOCKER_LABEL_VCS_DIRTY     = false
@@ -109,6 +110,7 @@ protoc:
 	--build-arg PROTOC_VERSION=${PROTOC_VERSION} \
 	--build-arg PROTOC_SHA256SUM=${PROTOC_SHA256SUM} \
 	--build-arg PROTOC_GEN_GO_VERSION=${PROTOC_GEN_GO_VERSION} \
+	--build-arg PROTOC_GEN_GRPC_GATEWAY_VERSION=${PROTOC_GEN_GRPC_GATEWAY_VERSION} \
 	-t ${IMAGENAME}:${VERSION}-protoc \
 	-t ${IMAGENAME}:latest-protoc \
 	-f docker/protoc.Dockerfile .
