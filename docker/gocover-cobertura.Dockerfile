@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM golang:1.13.8-alpine as build
+FROM golang:1.13.9-alpine as build
 
 RUN apk add --no-cache build-base=0.5-r1
 
