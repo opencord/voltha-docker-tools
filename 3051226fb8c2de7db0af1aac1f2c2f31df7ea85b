@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "29a11a7a_095ba0cd",
+        "filename": "VERSION",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000011
+      },
+      "writtenOn": "2020-04-02T21:50:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8478738b_95f1f1ae",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 5
+      },
+      "revId": "3051226fb8c2de7db0af1aac1f2c2f31df7ea85b",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a379bf48_4d9558e7",
         "filename": "docker/protoc.Dockerfile",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-02T21:11:04Z",
       "side": 1,
       "message": "Since the golang version is being bumped here, consider also bumping the GOLANG_VERSION in the Makefile to be consistent across all tools \u0026 repo artifacts.\n\n(Hm... I don\u0027t recall why I didn\u0027t just pass this variable through like in the other Dockerfiles.)",
+      "range": {
+        "startLine": 15,
+        "startChar": 12,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "3051226fb8c2de7db0af1aac1f2c2f31df7ea85b",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d50f1d98_097e40f5",
+        "filename": "docker/protoc.Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000011
+      },
+      "writtenOn": "2020-04-02T21:50:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a379bf48_4d9558e7",
       "range": {
         "startLine": 15,
         "startChar": 12,
