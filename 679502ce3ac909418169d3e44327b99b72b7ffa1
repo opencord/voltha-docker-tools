@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b2f2f12_cea34a18",
+        "filename": "docker/python-ci.Dockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000011
+      },
+      "writtenOn": "2020-08-14T22:30:26Z",
+      "side": 1,
+      "message": "This can probably be combined into a single RUN statement. \n\nGenerally the ARG and LABEL happens after any installation of tools",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "679502ce3ac909418169d3e44327b99b72b7ffa1",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    }
+  ]
+}
