@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "887d57e0_37a274b3",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-14T21:12:43Z",
+      "side": 1,
+      "message": "Use spaces not tabs for consistency.",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "3e5859b400fa50adb6bbe500fc2b6dbcf66556ff",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "560a92e7_834ff699",
+        "filename": "VERSION",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-14T21:12:43Z",
+      "side": 1,
+      "message": "For this repo, do not use -dev versions.  Instead, update VERSION using the steps specified in the README.  (this repo uses a different versioning convention than most of voltha.)\n\nYou can test these containers (in the repo that will make use of it) before pushing any changes here.  Just set VOLTHA_TOOLS_VERSION\u003dlatest in your local environment, and then test changes to the project\u0027s Makefile.\n\nThen you can push both changes at once (or at least, they can be considered together.)",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "3e5859b400fa50adb6bbe500fc2b6dbcf66556ff",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21a807d9_46966e96",
+        "filename": "docker/python-ci.Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-14T21:12:43Z",
+      "side": 1,
+      "message": "GOLANGCI -\u003e PYTHONCI",
+      "range": {
+        "startLine": 16,
+        "startChar": 13,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "3e5859b400fa50adb6bbe500fc2b6dbcf66556ff",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d0f56bd_05af122a",
+        "filename": "docker/python-ci.Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-14T21:12:43Z",
+      "side": 1,
+      "message": "For consistency, should probably install static dependencies as one of the early steps.",
+      "revId": "3e5859b400fa50adb6bbe500fc2b6dbcf66556ff",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    }
+  ]
+}
