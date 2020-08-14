@@ -19,7 +19,7 @@ ARG PROTOC_SHA256SUM
 ARG PROTOC_GEN_GO_VERSION
 ARG PROTOC_GEN_GRPC_GATEWAY_VERSION
 
-RUN apk add --no-cache libatomic=9.2.0-r4 musl=1.1.24-r2
+RUN apk add --no-cache libatomic=9.3.0-r0 musl=1.1.24-r2
 
 # download & compile this specific version of protoc-gen-go
 RUN GO111MODULE=on CGO_ENABLED=0 go get -u \
