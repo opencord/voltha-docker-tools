@@ -26,6 +26,7 @@ PROTOC_VERSION                  ?= "3.7.0"
 PROTOC_SHA256SUM                ?= "a1b8ed22d6dc53c5b8680a6f1760a305b33ef471bece482e92728f00ba2a2969"
 PROTOC_GEN_GO_VERSION           ?= "1.3.2"
 PROTOC_GEN_GRPC_GATEWAY_VERSION ?= "1.14.3"
+PYTHONCI_LINT_VERSION 			?= "3.8"
 
 # Docker related
 DOCKER_LABEL_VCS_DIRTY     = false
@@ -91,6 +92,13 @@ golang:
 	-t ${IMAGENAME}:latest-golang \
 	-f docker/golang.Dockerfile .
 
+python-lint:
+	${DOCKER} build ${DOCKER_BUILD_ARGS} \
+	--build-arg PYTHONCI_LINT_VERSION=${PYTHONCI_LINT_VERSION} \
+	-t ${IMAGENAME}:${VERSION}-python-lint \
+	-t ${IMAGENAME}:latest-python-lint \
+	-f docker/python-ci.Dockerfile .
+
 golangci-lint:
 	${DOCKER} build ${DOCKER_BUILD_ARGS} \
 	--build-arg GOLANGCI_LINT_VERSION=${GOLANGCI_LINT_VERSION} \
@@ -126,4 +134,5 @@ endif
 	${DOCKER} push ${IMAGENAME}:${VERSION}-golangci-lint
 	${DOCKER} push ${IMAGENAME}:${VERSION}-hadolint
 	${DOCKER} push ${IMAGENAME}:${VERSION}-protoc
+	${DOCKER} push ${IMAGENAME}:${VERSION}-python-lint
 
