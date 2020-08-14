@@ -68,7 +68,7 @@ docker-lint: hadolint
 
 build: docker-build
 
-docker-build: go-junit-report gocover-cobertura golang golangci-lint hadolint protoc
+docker-build: go-junit-report gocover-cobertura golang golangci-lint hadolint protoc python
 
 go-junit-report:
 	${DOCKER} build ${DOCKER_BUILD_ARGS} \
@@ -90,6 +90,12 @@ golang:
 	-t ${IMAGENAME}:${VERSION}-golang \
 	-t ${IMAGENAME}:latest-golang \
 	-f docker/golang.Dockerfile .
+
+python:
+	${DOCKER} build ${DOCKER_BUILD_ARGS} \
+	-t ${IMAGENAME}:${VERSION}-python \
+	-t ${IMAGENAME}:latest-python \
+	-f docker/python.Dockerfile .
 
 golangci-lint:
 	${DOCKER} build ${DOCKER_BUILD_ARGS} \
@@ -126,4 +132,5 @@ endif
 	${DOCKER} push ${IMAGENAME}:${VERSION}-golangci-lint
 	${DOCKER} push ${IMAGENAME}:${VERSION}-hadolint
 	${DOCKER} push ${IMAGENAME}:${VERSION}-protoc
+	${DOCKER} push ${IMAGENAME}:${VERSION}-python
 
