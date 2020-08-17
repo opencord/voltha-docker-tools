@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "749414d5_cea358f8",
+        "filename": "VERSION",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-17T14:48:42Z",
+      "side": 1,
+      "message": "Should be 2.3.0 per the README:\n\nBump Minor version if:\n    Minor version of a tool has changed.\n    A new tool has been added. \u003c--\n\n\u003cMajor\u003e.\u003cMinor\u003e.\u003cPatch\u003e",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 5
+      },
+      "revId": "37db97335a1ba30907264c188a30a60bde8564d8",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    }
+  ]
+}
