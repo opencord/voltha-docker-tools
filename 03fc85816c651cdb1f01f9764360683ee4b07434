@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6759c9f1_4307b964",
+        "filename": "docker/python.Dockerfile",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-21T20:59:55Z",
+      "side": 1,
+      "message": "`python-version`",
+      "range": {
+        "startLine": 39,
+        "startChar": 19,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "03fc85816c651cdb1f01f9764360683ee4b07434",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    }
+  ]
+}
