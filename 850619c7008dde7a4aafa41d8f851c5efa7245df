@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15a92224_798ef049",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-21T19:29:34Z",
+      "side": 1,
+      "message": "PYTHONCI-\u003ePYTHON",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "850619c7008dde7a4aafa41d8f851c5efa7245df",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a570cf0_0c8f12c3",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-21T19:29:34Z",
+      "side": 1,
+      "message": "Just `python` over `python-lint`?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 11
+      },
+      "revId": "850619c7008dde7a4aafa41d8f851c5efa7245df",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22e76c42_cabb6357",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-21T19:29:34Z",
+      "side": 1,
+      "message": "Prefer just `python` over `python-lint`?",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 39
+      },
+      "revId": "850619c7008dde7a4aafa41d8f851c5efa7245df",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf9b8bb6_e1289cf4",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-21T19:29:34Z",
+      "side": 1,
+      "message": "python-ci -\u003e python",
+      "range": {
+        "startLine": 100,
+        "startChar": 11,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "850619c7008dde7a4aafa41d8f851c5efa7245df",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22d8bb07_f6dd7e46",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-21T19:29:34Z",
+      "side": 1,
+      "message": "python-lint -\u003e python ?\n\nAs background: `golangci-lint` is the complete name of a single tool.",
+      "range": {
+        "startLine": 137,
+        "startChar": 40,
+        "endLine": 137,
+        "endChar": 51
+      },
+      "revId": "850619c7008dde7a4aafa41d8f851c5efa7245df",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fe8f9b1_5d587f8a",
+        "filename": "docker/python-ci.Dockerfile",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-21T19:29:34Z",
+      "side": 1,
+      "message": "I this file should probably just be called `python.Dockerfile` instead of python-`ci.Dockerfile`.  Other references should be renamed to just PYTHON instead of PYTHONCI.\n\nAlternatively, if there are intended to be multiple python-based tool containers, a more specific name can be picked (python-tox / python-bandit?)",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "850619c7008dde7a4aafa41d8f851c5efa7245df",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0192984b_8c77bfa0",
+        "filename": "docker/python-ci.Dockerfile",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-21T19:29:34Z",
+      "side": 1,
+      "message": "PYTHONCI-\u003ePYTHON",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 12
+      },
+      "revId": "850619c7008dde7a4aafa41d8f851c5efa7245df",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eebb47ae_44280ad7",
+        "filename": "docker/python-ci.Dockerfile",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-21T19:29:34Z",
+      "side": 1,
+      "message": "python-version not golangci-lint-version\n\nPYTHONCI-\u003ePYTHON",
+      "range": {
+        "startLine": 39,
+        "startChar": 19,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "850619c7008dde7a4aafa41d8f851c5efa7245df",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    }
+  ]
+}
