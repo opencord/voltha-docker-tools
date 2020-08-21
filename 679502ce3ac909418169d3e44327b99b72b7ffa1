@@ -22,6 +22,30 @@
       "revId": "679502ce3ac909418169d3e44327b99b72b7ffa1",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "702dfa5b_42494b24",
+        "filename": "docker/python-ci.Dockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2020-08-21T20:25:35Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "6b2f2f12_cea34a18",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "679502ce3ac909418169d3e44327b99b72b7ffa1",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
     }
   ]
 }

@@ -22,6 +22,30 @@
       "revId": "37db97335a1ba30907264c188a30a60bde8564d8",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2a2faa5_02113126",
+        "filename": "VERSION",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2020-08-21T20:25:35Z",
+      "side": 1,
+      "message": "Fixed to 2.3.0",
+      "parentUuid": "749414d5_cea358f8",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 5
+      },
+      "revId": "37db97335a1ba30907264c188a30a60bde8564d8",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
     }
   ]
 }
