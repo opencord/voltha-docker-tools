@@ -68,6 +68,30 @@
       "revId": "59f175f44636399788832ca5f93b4679aae9710d",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1696717_f562d459",
+        "filename": "docker/python.Dockerfile",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2020-08-24T16:35:34Z",
+      "side": 1,
+      "message": "I would prefer to name it python lint tool rather than python tool. Yes it corresponds to python version but doest it make sense to confuse the user or the docker container to specify the version of tool rather than version of the language?",
+      "parentUuid": "d817554c_0f692bd5",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "59f175f44636399788832ca5f93b4679aae9710d",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
     }
   ]
 }
