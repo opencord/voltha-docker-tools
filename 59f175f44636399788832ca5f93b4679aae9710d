@@ -140,6 +140,30 @@
       "revId": "59f175f44636399788832ca5f93b4679aae9710d",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e9cc37_09fe020e",
+        "filename": "docker/python.Dockerfile",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000011
+      },
+      "writtenOn": "2020-08-24T17:07:50Z",
+      "side": 1,
+      "message": "I think I agree with Kent in principle, but also I don\u0027t see the need to parameterize the individual tool versions as the overall VERSION of the repo could be used to determine these individual versions.\n\nCould we just set all the versions in the Dockerfile, and eliminate the version setting arguments?",
+      "parentUuid": "7c41eab1_2b76ef18",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "59f175f44636399788832ca5f93b4679aae9710d",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
     }
   ]
 }
