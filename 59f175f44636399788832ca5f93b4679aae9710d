@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff6de861_bcef9e22",
+        "filename": "Makefile",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-24T16:13:06Z",
+      "side": 1,
+      "message": "Is there a 3.8.x version available?  That would be preferred to guarantee build repeatability.",
+      "range": {
+        "startLine": 29,
+        "startChar": 36,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "59f175f44636399788832ca5f93b4679aae9710d",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa211498_ad535a31",
+        "filename": "Makefile",
+        "patchSetId": 14
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-24T16:13:06Z",
+      "side": 1,
+      "message": "PYTHON_LINT -\u003e PYTHON ?",
+      "range": {
+        "startLine": 97,
+        "startChar": 13,
+        "endLine": 97,
+        "endChar": 24
+      },
+      "revId": "59f175f44636399788832ca5f93b4679aae9710d",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d817554c_0f692bd5",
+        "filename": "docker/python.Dockerfile",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-24T16:13:06Z",
+      "side": 1,
+      "message": "PYTHON_LINT -\u003e PYTHON ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "59f175f44636399788832ca5f93b4679aae9710d",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    }
+  ]
+}
