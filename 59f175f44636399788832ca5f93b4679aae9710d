@@ -116,6 +116,30 @@
       "revId": "59f175f44636399788832ca5f93b4679aae9710d",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c41eab1_2b76ef18",
+        "filename": "docker/python.Dockerfile",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2020-08-24T16:51:52Z",
+      "side": 1,
+      "message": "The whole docker container is a python lint \"tool\" it has no other meaning and reason to exist. I see it as a container of lint tools made of python 3.8 and above. But this is a more philosophical question than some real problem. I\u0027ve changed it already 2 times ;-(.",
+      "parentUuid": "b2087fe9_a1a63071",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "59f175f44636399788832ca5f93b4679aae9710d",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
     }
   ]
 }
