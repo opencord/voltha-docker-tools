@@ -164,6 +164,30 @@
       "revId": "59f175f44636399788832ca5f93b4679aae9710d",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a95019f_6e02c890",
+        "filename": "docker/python.Dockerfile",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-08-24T17:17:07Z",
+      "side": 1,
+      "message": "For context: When I was originally putting together this repo, the idea was to have all the tool versions specified in one place (the start of the Makefile), and only have to bump those versions in order to upversion things, leaving the dockerfiles unchanged (which seemed less error-prone).  This has worked relatively well, I think, though there are some cases like this where there are versions-of-tools dependent on verions-of-containers making things slightly more difficult.",
+      "parentUuid": "d6e9cc37_09fe020e",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "59f175f44636399788832ca5f93b4679aae9710d",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
     }
   ]
 }
