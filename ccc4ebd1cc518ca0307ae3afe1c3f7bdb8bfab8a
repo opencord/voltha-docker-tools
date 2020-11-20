@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "028c7ced_1cd294c6",
+        "filename": "docker/gocover-cobertura.Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-11-20T19:28:11Z",
+      "side": 1,
+      "message": "Should probably be passing ARGs from the Makefile to set the go version (and to keep this version in sync).",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "ccc4ebd1cc518ca0307ae3afe1c3f7bdb8bfab8a",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ef91e4d_4e3df4bd",
+        "filename": "docker/gocover-cobertura.Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-11-20T19:28:11Z",
+      "side": 1,
+      "message": "May make sense to reuse the \"cache setup\" lines from golang.Dockerfile, namely the \"mkdir -m 777 /.cache /go/pkg\" bit (this sets the permissions for a newly-created mounted volume iirc.)",
+      "revId": "ccc4ebd1cc518ca0307ae3afe1c3f7bdb8bfab8a",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    }
+  ]
+}
