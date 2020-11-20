@@ -22,6 +22,30 @@
       "revId": "5cb1cce82918daf118082c3132ce96376b58fc4a",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52777fc2_ca234044",
+        "filename": "docker/gocover-cobertura.Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000007
+      },
+      "writtenOn": "2020-11-20T20:57:57Z",
+      "side": 1,
+      "message": "the default GOPATH is \"/go\" and that\u0027s where the tool will look for the file while loading it to generate the AST.\nWe can either set the GOPATH to \"/app\" or change where we mount things in the container (note that we need to change that anyway as the package needs to be in the proper location: https://gerrit.opencord.org/c/bbsim/+/21763/1/Makefile#34)\n\nI don\u0027t have a strong opinion on using \"/go\" or \"/app\" as GOPATH, I stayed with \"/app\" as that were we\u0027re mounting in the other containers.",
+      "parentUuid": "d20ff861_b9781686",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "5cb1cce82918daf118082c3132ce96376b58fc4a",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
     }
   ]
 }
