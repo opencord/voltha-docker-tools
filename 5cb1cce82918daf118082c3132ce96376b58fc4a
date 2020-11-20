@@ -46,6 +46,30 @@
       "revId": "5cb1cce82918daf118082c3132ce96376b58fc4a",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34738b3a_9d57acfd",
+        "filename": "docker/gocover-cobertura.Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-11-20T21:15:10Z",
+      "side": 1,
+      "message": "The package shouldn\u0027t need to be in a specific location if go.mod is present (in-tree requirements should no longer be necessary with the introduction of go mod).  A -mod\u003dvendor flag may be required to make this work iirc.\n\nOr is this a specific limitation of this tool?",
+      "parentUuid": "52777fc2_ca234044",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "5cb1cce82918daf118082c3132ce96376b58fc4a",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
     }
   ]
 }
