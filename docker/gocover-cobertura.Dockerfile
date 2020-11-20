@@ -20,12 +20,17 @@ RUN apk add --no-cache build-base=0.5-r1
 ARG GOCOVER_COBERTURA_VERSION
 RUN GO111MODULE=on CGO_ENABLED=0 go get -u -ldflags "-linkmode external -extldflags -static" github.com/t-yuki/gocover-cobertura@$GOCOVER_COBERTURA_VERSION
 
-FROM busybox:1.31.1
+FROM golang:1.13.9-alpine
 
 # copy gocover-cobertura
 COPY --from=build /go/bin/* /usr/local/bin/
 
 WORKDIR /app
+
+ENV GOPATH=/app
+ENV GOCACHE=/app/cache
+
+RUN mkdir -p $GOCACHE
 
 # Label image
 ARG org_label_schema_version=unknown

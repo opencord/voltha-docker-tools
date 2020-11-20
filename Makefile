@@ -133,4 +133,3 @@ endif
 	${DOCKER} push ${IMAGENAME}:${VERSION}-hadolint
 	${DOCKER} push ${IMAGENAME}:${VERSION}-protoc
 	${DOCKER} push ${IMAGENAME}:${VERSION}-python
-
