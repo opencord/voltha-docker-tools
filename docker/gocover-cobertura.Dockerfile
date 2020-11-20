@@ -11,8 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-FROM golang:1.13.9-alpine as build
+ARG GOLANG_VERSION
+FROM golang:$GOLANG_VERSION-alpine as build
 
 RUN apk add --no-cache build-base=0.5-r1
 
@@ -20,12 +20,16 @@ RUN apk add --no-cache build-base=0.5-r1
 ARG GOCOVER_COBERTURA_VERSION
 RUN GO111MODULE=on CGO_ENABLED=0 go get -u -ldflags "-linkmode external -extldflags -static" github.com/t-yuki/gocover-cobertura@$GOCOVER_COBERTURA_VERSION
 
-FROM busybox:1.31.1
+FROM golang:$GOLANG_VERSION-alpine
 
 # copy gocover-cobertura
 COPY --from=build /go/bin/* /usr/local/bin/
 
 WORKDIR /app
+
+ENV GOPATH=/app
+
+RUN mkdir -m 777 /.cache /go/pkg
 
 # Label image
 ARG org_label_schema_version=unknown

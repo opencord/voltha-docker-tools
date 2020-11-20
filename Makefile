@@ -79,6 +79,7 @@ go-junit-report:
 
 gocover-cobertura:
 	${DOCKER} build ${DOCKER_BUILD_ARGS} \
+	--build-arg GOLANG_VERSION=${GOLANG_VERSION} \
 	--build-arg GOCOVER_COBERTURA_VERSION=${GOCOVER_COBERTURA_VERSION} \
 	-t ${IMAGENAME}:${VERSION}-gocover-cobertura \
 	-t ${IMAGENAME}:latest-gocover-cobertura \
@@ -133,4 +134,3 @@ endif
 	${DOCKER} push ${IMAGENAME}:${VERSION}-hadolint
 	${DOCKER} push ${IMAGENAME}:${VERSION}-protoc
 	${DOCKER} push ${IMAGENAME}:${VERSION}-python
-
