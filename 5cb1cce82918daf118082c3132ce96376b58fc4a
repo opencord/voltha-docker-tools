@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d20ff861_b9781686",
+        "filename": "docker/gocover-cobertura.Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-11-20T20:37:06Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure, but I don\u0027t think the GOPATH should be modified.  Setting WORKDIR should be enough.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "5cb1cce82918daf118082c3132ce96376b58fc4a",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    }
+  ]
+}
