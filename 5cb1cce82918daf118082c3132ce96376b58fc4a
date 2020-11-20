@@ -70,6 +70,30 @@
       "revId": "5cb1cce82918daf118082c3132ce96376b58fc4a",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bb389bb_66f41478",
+        "filename": "docker/gocover-cobertura.Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000007
+      },
+      "writtenOn": "2020-11-20T21:56:39Z",
+      "side": 1,
+      "message": "It\u0027s a limitation of the tool",
+      "parentUuid": "34738b3a_9d57acfd",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "5cb1cce82918daf118082c3132ce96376b58fc4a",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
     }
   ]
 }
