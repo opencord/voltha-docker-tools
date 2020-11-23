@@ -1,0 +1,7 @@
+Verified+1: Jenkins Technical User <do-not-reply@opennetworking.org>
+Code-Review+2: Kent Hagerman <khagerma@ciena.com>
+Submitted-by: Matteo Scandolo <teo@opennetworking.org>
+Submitted-at: Mon, 23 Nov 2020 21:16:02 +0000
+Reviewed-on: https://gerrit.opencord.org/c/voltha-docker-tools/+/21762
+Project: voltha-docker-tools
+Branch: refs/heads/master
