@@ -1,4 +1,4 @@
-# Copyright 2020-present Open Networking Foundation
+# Copyright 2021-present Open Networking Foundation
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,15 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ARG GOLANG_VERSION
-FROM golang:$GOLANG_VERSION-alpine
+FROM alpine:3.8
 
-RUN apk add --no-cache git=2.24.4-r0 && \
-    mkdir -m 777 /.cache /go/pkg
+ENV KUBE_LATEST_VERSION="v1.20.4"
 
-ENV GO111MODULE=on CGO_ENABLED=0
+RUN adduser -h voltha -s /sbin/nologin -u 1000 -D voltha \
+ && apk add --no-cache curl=7.61.1-r3 bash=4.4.19-r1 openssl=1.0.2u-r0 \
+ && curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_LATEST_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
+ && chmod +x /usr/local/bin/kubectl
 
-WORKDIR /app
+RUN bash --version
 
 # Label image
 ARG org_label_schema_version=unknown
