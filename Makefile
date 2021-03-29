@@ -122,6 +122,12 @@ protoc:
 	-t ${IMAGENAME}:latest-protoc \
 	-f docker/protoc.Dockerfile .
 
+onos-config-loader:
+	${DOCKER} build ${DOCKER_BUILD_ARGS} \
+	-t ${IMAGENAME}:${VERSION}-onos-config-loader \
+	-t ${IMAGENAME}:latest-onos-config-loader \
+	-f docker/onos-config-loader.Dockerfile .
+
 docker-push:
 ifneq (false,$(DOCKER_LABEL_VCS_DIRTY))
 	@echo "Local repo is dirty.  Refusing to push."
@@ -134,3 +140,4 @@ endif
 	${DOCKER} push ${IMAGENAME}:${VERSION}-hadolint
 	${DOCKER} push ${IMAGENAME}:${VERSION}-protoc
 	${DOCKER} push ${IMAGENAME}:${VERSION}-python
+	${DOCKER} push ${IMAGENAME}:${VERSION}-onos-config-loader
