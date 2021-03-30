@@ -68,7 +68,7 @@ docker-lint: hadolint
 
 build: docker-build
 
-docker-build: go-junit-report gocover-cobertura golang golangci-lint hadolint protoc python
+docker-build: go-junit-report gocover-cobertura golang golangci-lint hadolint protoc python onos-config-loader
 
 go-junit-report:
 	${DOCKER} build ${DOCKER_BUILD_ARGS} \
