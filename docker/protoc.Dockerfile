@@ -12,14 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM golang:1.13.9-alpine as build
+ARG GOLANG_VERSION
+FROM golang:$GOLANG_VERSION-alpine as build
 
 ARG PROTOC_VERSION
 ARG PROTOC_SHA256SUM
 ARG PROTOC_GEN_GO_VERSION
 ARG PROTOC_GEN_GRPC_GATEWAY_VERSION
 
-RUN apk add --no-cache libatomic=9.3.0-r0 musl=1.1.24-r2
+RUN apk add --no-cache libatomic=10.2.1_pre1-r3 musl=1.2.2-r0
 
 # download & compile this specific version of protoc-gen-go
 RUN GO111MODULE=on CGO_ENABLED=0 go get -u \

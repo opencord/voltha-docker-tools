@@ -12,9 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM golang:1.13.9-alpine as build
+ARG GOLANG_VERSION
+FROM golang:$GOLANG_VERSION-alpine as build
 
-RUN apk add --no-cache build-base=0.5-r1
+RUN apk add --no-cache build-base=0.5-r2
 
 # download & compile this specific version of go-junit-report
 ARG GO_JUNIT_REPORT_VERSION
