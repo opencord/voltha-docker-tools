@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1096ac9_f6567629",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2021-04-06T20:42:45Z",
+      "side": 1,
+      "message": "If taking advice from other comment, add:\n\n--build-arg GOLANG_VERSION\u003d${GOLANG_VERSION} \\",
+      "revId": "531357adcc19163cb5e58e817dfcc1ef10bc6bf2",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04f4340c_5cf8913c",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2021-04-06T20:42:45Z",
+      "side": 1,
+      "message": "If taking advice from other comment, add:\n\n--build-arg GOLANG_VERSION\u003d${GOLANG_VERSION} \\",
+      "revId": "531357adcc19163cb5e58e817dfcc1ef10bc6bf2",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6a28ef_7a2b546c",
+        "filename": "VERSION",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2021-04-06T20:42:45Z",
+      "side": 1,
+      "message": "From the rules in this repo\u0027s README, I believe this should be bumped to 2.4.0, as non-breaking additions are made between golang versions.\n\n(This repo has been using a semver scheme, as it is just a tool, and not part of the voltha release cycle.)",
+      "revId": "531357adcc19163cb5e58e817dfcc1ef10bc6bf2",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c1148db_d5069e0d",
+        "filename": "docker/go-junit-report.Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2021-04-06T20:42:45Z",
+      "side": 1,
+      "message": "Is it worth converting this to accept an extra build arg?\n\nARG GOLANG_VERSION\nFROM golang:$GOLANG_VERSION-alpine",
+      "revId": "531357adcc19163cb5e58e817dfcc1ef10bc6bf2",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f5a92e4_e12ef249",
+        "filename": "docker/protoc.Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2021-04-06T20:42:45Z",
+      "side": 1,
+      "message": "Is it worth converting this to accept an extra build arg?\n\nARG GOLANG_VERSION\nFROM golang:$GOLANG_VERSION-alpine",
+      "revId": "531357adcc19163cb5e58e817dfcc1ef10bc6bf2",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    }
+  ]
+}
