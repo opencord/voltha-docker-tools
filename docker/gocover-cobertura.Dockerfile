@@ -14,7 +14,7 @@
 ARG GOLANG_VERSION
 FROM golang:$GOLANG_VERSION-alpine as build
 
-RUN apk add --no-cache build-base=0.5-r1
+RUN apk add --no-cache build-base=0.5-r2
 
 # download & compile this specific version of gocover-cobertura
 ARG GOCOVER_COBERTURA_VERSION

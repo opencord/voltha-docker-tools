@@ -19,7 +19,7 @@ SHELL = bash -e -o pipefail
 VERSION                         ?= $(shell cat ./VERSION)
 GO_JUNIT_REPORT_VERSION         ?= "0.9.1"
 GOCOVER_COBERTURA_VERSION       ?= "v0.0.0-20180217150009-aaee18c8195c"
-GOLANG_VERSION                  ?= "1.13.9"
+GOLANG_VERSION                  ?= "1.16.3"
 GOLANGCI_LINT_VERSION           ?= "1.23.6"
 HADOLINT_VERSION                ?= "1.17.5"
 PROTOC_VERSION                  ?= "3.7.0"
@@ -31,13 +31,13 @@ PROTOC_GEN_GRPC_GATEWAY_VERSION ?= "1.14.3"
 DOCKER_LABEL_VCS_DIRTY     = false
 ifneq ($(shell git status --porcelain | wc -l | sed -e 's/ //g'),0)
     DOCKER_LABEL_VCS_DIRTY = true
-    VERSION                = latest
 endif
 
 DOCKER                     ?= docker
 DOCKER_EXTRA_ARGS          ?=
 DOCKER_REGISTRY            ?=
 DOCKER_REPOSITORY          ?= voltha/
+DOCKER_TAG                 ?= ${VERSION}$(shell [[ ${DOCKER_LABEL_VCS_DIRTY} == "true" ]] && echo "-dirty" || true)
 IMAGENAME                  := ${DOCKER_REGISTRY}${DOCKER_REPOSITORY}voltha-ci-tools
 
 ## Docker labels. Only set ref and commit date if committed
@@ -73,7 +73,7 @@ docker-build: go-junit-report gocover-cobertura golang golangci-lint hadolint pr
 go-junit-report:
 	${DOCKER} build ${DOCKER_BUILD_ARGS} \
 	--build-arg GO_JUNIT_REPORT_VERSION=${GO_JUNIT_REPORT_VERSION} \
-	-t ${IMAGENAME}:${VERSION}-go-junit-report \
+	-t ${IMAGENAME}:${DOCKER_TAG}-go-junit-report \
 	-t ${IMAGENAME}:latest-go-junit-report \
 	-f docker/go-junit-report.Dockerfile .
 
@@ -81,34 +81,34 @@ gocover-cobertura:
 	${DOCKER} build ${DOCKER_BUILD_ARGS} \
 	--build-arg GOLANG_VERSION=${GOLANG_VERSION} \
 	--build-arg GOCOVER_COBERTURA_VERSION=${GOCOVER_COBERTURA_VERSION} \
-	-t ${IMAGENAME}:${VERSION}-gocover-cobertura \
+	-t ${IMAGENAME}:${DOCKER_TAG}-gocover-cobertura \
 	-t ${IMAGENAME}:latest-gocover-cobertura \
 	-f docker/gocover-cobertura.Dockerfile .
 
 golang:
 	${DOCKER} build ${DOCKER_BUILD_ARGS} \
 	--build-arg GOLANG_VERSION=${GOLANG_VERSION} \
-	-t ${IMAGENAME}:${VERSION}-golang \
+	-t ${IMAGENAME}:${DOCKER_TAG}-golang \
 	-t ${IMAGENAME}:latest-golang \
 	-f docker/golang.Dockerfile .
 
 python:
 	${DOCKER} build ${DOCKER_BUILD_ARGS} \
-	-t ${IMAGENAME}:${VERSION}-python \
+	-t ${IMAGENAME}:${DOCKER_TAG}-python \
 	-t ${IMAGENAME}:latest-python \
 	-f docker/python.Dockerfile .
 
 golangci-lint:
 	${DOCKER} build ${DOCKER_BUILD_ARGS} \
 	--build-arg GOLANGCI_LINT_VERSION=${GOLANGCI_LINT_VERSION} \
-	-t ${IMAGENAME}:${VERSION}-golangci-lint \
+	-t ${IMAGENAME}:${DOCKER_TAG}-golangci-lint \
 	-t ${IMAGENAME}:latest-golangci-lint \
 	-f docker/golangci-lint.Dockerfile .
 
 hadolint:
 	${DOCKER} build ${DOCKER_BUILD_ARGS} \
     --build-arg HADOLINT_VERSION=${HADOLINT_VERSION} \
-    -t ${IMAGENAME}:${VERSION}-hadolint \
+    -t ${IMAGENAME}:${DOCKER_TAG}-hadolint \
     -t ${IMAGENAME}:latest-hadolint \
     -f docker/hadolint.Dockerfile .
 
@@ -118,13 +118,13 @@ protoc:
 	--build-arg PROTOC_SHA256SUM=${PROTOC_SHA256SUM} \
 	--build-arg PROTOC_GEN_GO_VERSION=${PROTOC_GEN_GO_VERSION} \
 	--build-arg PROTOC_GEN_GRPC_GATEWAY_VERSION=${PROTOC_GEN_GRPC_GATEWAY_VERSION} \
-	-t ${IMAGENAME}:${VERSION}-protoc \
+	-t ${IMAGENAME}:${DOCKER_TAG}-protoc \
 	-t ${IMAGENAME}:latest-protoc \
 	-f docker/protoc.Dockerfile .
 
 onos-config-loader:
 	${DOCKER} build ${DOCKER_BUILD_ARGS} \
-	-t ${IMAGENAME}:${VERSION}-onos-config-loader \
+	-t ${IMAGENAME}:${DOCKER_TAG}-onos-config-loader \
 	-t ${IMAGENAME}:latest-onos-config-loader \
 	-f docker/onos-config-loader.Dockerfile .
 
@@ -133,11 +133,11 @@ ifneq (false,$(DOCKER_LABEL_VCS_DIRTY))
 	@echo "Local repo is dirty.  Refusing to push."
 	@exit 1
 endif
-	${DOCKER} push ${IMAGENAME}:${VERSION}-go-junit-report
-	${DOCKER} push ${IMAGENAME}:${VERSION}-gocover-cobertura
-	${DOCKER} push ${IMAGENAME}:${VERSION}-golang
-	${DOCKER} push ${IMAGENAME}:${VERSION}-golangci-lint
-	${DOCKER} push ${IMAGENAME}:${VERSION}-hadolint
-	${DOCKER} push ${IMAGENAME}:${VERSION}-protoc
-	${DOCKER} push ${IMAGENAME}:${VERSION}-python
-	${DOCKER} push ${IMAGENAME}:${VERSION}-onos-config-loader
+	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-go-junit-report
+	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-gocover-cobertura
+	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-golang
+	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-golangci-lint
+	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-hadolint
+	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-protoc
+	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-python
+	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-onos-config-loader
