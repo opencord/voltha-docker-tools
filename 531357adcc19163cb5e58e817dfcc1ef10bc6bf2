@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f4d4e9d8_615535c7",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2021-04-06T21:08:07Z",
+      "side": 1,
+      "message": "i think we need a bigger discussion about using build args here or inlining everything. figured i didn\u0027t want to tackle this in this change.",
+      "parentUuid": "b1096ac9_f6567629",
+      "revId": "531357adcc19163cb5e58e817dfcc1ef10bc6bf2",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04f4340c_5cf8913c",
         "filename": "Makefile",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2021-04-06T20:42:45Z",
       "side": 1,
       "message": "If taking advice from other comment, add:\n\n--build-arg GOLANG_VERSION\u003d${GOLANG_VERSION} \\",
+      "revId": "531357adcc19163cb5e58e817dfcc1ef10bc6bf2",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a985337d_81ee926b",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2021-04-06T21:08:07Z",
+      "side": 1,
+      "message": "i think we need a bigger discussion about using build args here or inlining everything. figured i didn\u0027t want to tackle this in this change.",
+      "parentUuid": "04f4340c_5cf8913c",
       "revId": "531357adcc19163cb5e58e817dfcc1ef10bc6bf2",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "589aad25_0bfda1d8",
+        "filename": "VERSION",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2021-04-06T21:08:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db6a28ef_7a2b546c",
+      "revId": "531357adcc19163cb5e58e817dfcc1ef10bc6bf2",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c1148db_d5069e0d",
         "filename": "docker/go-junit-report.Dockerfile",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "1ce21bb8_3ff2cd0d",
+        "filename": "docker/go-junit-report.Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2021-04-06T21:08:07Z",
+      "side": 1,
+      "message": "I thought about that but two things came to mind. (1) a discussion in the group about using build-args for version information and the consensus was no and things should be in line. i waver on this back and forth, so i went for like for like changes as opposed to changing the way things are done.",
+      "parentUuid": "6c1148db_d5069e0d",
+      "revId": "531357adcc19163cb5e58e817dfcc1ef10bc6bf2",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f5a92e4_e12ef249",
         "filename": "docker/protoc.Dockerfile",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2021-04-06T20:42:45Z",
       "side": 1,
       "message": "Is it worth converting this to accept an extra build arg?\n\nARG GOLANG_VERSION\nFROM golang:$GOLANG_VERSION-alpine",
+      "revId": "531357adcc19163cb5e58e817dfcc1ef10bc6bf2",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ae5a3f2_6a2d5963",
+        "filename": "docker/protoc.Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2021-04-06T21:08:07Z",
+      "side": 1,
+      "message": "see previous comment. making like for like changes as opposed to any general change.",
+      "parentUuid": "2f5a92e4_e12ef249",
       "revId": "531357adcc19163cb5e58e817dfcc1ef10bc6bf2",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
