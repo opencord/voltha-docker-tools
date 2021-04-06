@@ -19,7 +19,7 @@ SHELL = bash -e -o pipefail
 VERSION                         ?= $(shell cat ./VERSION)
 GO_JUNIT_REPORT_VERSION         ?= "0.9.1"
 GOCOVER_COBERTURA_VERSION       ?= "v0.0.0-20180217150009-aaee18c8195c"
-GOLANG_VERSION                  ?= "1.13.9"
+GOLANG_VERSION                  ?= "1.16.3"
 GOLANGCI_LINT_VERSION           ?= "1.23.6"
 HADOLINT_VERSION                ?= "1.17.5"
 PROTOC_VERSION                  ?= "3.7.0"
@@ -31,7 +31,7 @@ PROTOC_GEN_GRPC_GATEWAY_VERSION ?= "1.14.3"
 DOCKER_LABEL_VCS_DIRTY     = false
 ifneq ($(shell git status --porcelain | wc -l | sed -e 's/ //g'),0)
     DOCKER_LABEL_VCS_DIRTY = true
-    VERSION                = latest
+#    VERSION                = latest
 endif
 
 DOCKER                     ?= docker
