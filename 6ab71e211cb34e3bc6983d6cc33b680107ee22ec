@@ -70,6 +70,30 @@
       "revId": "6ab71e211cb34e3bc6983d6cc33b680107ee22ec",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9429a03_a9087a59",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2021-04-07T14:21:07Z",
+      "side": 1,
+      "message": "This was intentional.\n\nThe idea was to allow to easy local testing of these tools in other voltha repos.\n\nSimply `export VOLTHA_TOOLS_VERSION\u003dlatest`, and then commands run in any voltha repo will pick up the latest locally-built tool containers.  \n\nAs the developer, you don\u0027t need to modify this repo, or mess around with versions; just have uncommitted changes, and run \"make build\" as usual.",
+      "parentUuid": "7e20b37b_ee3487d8",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "6ab71e211cb34e3bc6983d6cc33b680107ee22ec",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
     }
   ]
 }
