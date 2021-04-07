@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bbec574_9aa47b57",
+        "filename": "docker/go-junit-report.Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000116
+      },
+      "writtenOn": "2021-04-07T07:59:56Z",
+      "side": 1,
+      "message": "can we parametrize this file as the other ones ?",
+      "revId": "28cfab2864e828c2f3aed9aa8291fdd5ad572b3f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f43195e_d41d1e05",
+        "filename": "docker/protoc.Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000116
+      },
+      "writtenOn": "2021-04-07T07:59:56Z",
+      "side": 1,
+      "message": "same",
+      "revId": "28cfab2864e828c2f3aed9aa8291fdd5ad572b3f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    }
+  ]
+}
