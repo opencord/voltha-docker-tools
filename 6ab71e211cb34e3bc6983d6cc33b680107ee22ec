@@ -118,6 +118,30 @@
       "revId": "6ab71e211cb34e3bc6983d6cc33b680107ee22ec",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d0b7bb5_db8e2423",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2021-04-07T16:56:55Z",
+      "side": 1,
+      "message": "but the consequence is if i do \"VERSION\u003dfoo make build\" i get \"image:latest\" as opposed to \"image:foo\" so the makefile overrode something i explicitly set. if i want latest i can do \"DOCKER_TAG\u003dlatest make build\" it is what happens in all the other repos",
+      "parentUuid": "29d03a3f_0359a688",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "6ab71e211cb34e3bc6983d6cc33b680107ee22ec",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
     }
   ]
 }
