@@ -22,6 +22,30 @@
       "revId": "6ab71e211cb34e3bc6983d6cc33b680107ee22ec",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e47df58_54c48224",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2021-04-07T00:06:59Z",
+      "side": 1,
+      "message": "thanks for catching this. this was originally commented out because it means that if you made a change the tag would always be \"latest\" even if you set the value of VERSION. this is actually annoying. I will change this to be consistent with the other repos in that it will be ${VERSION}-dirty if it is dirty.",
+      "parentUuid": "6f46bbeb_dd4787b2",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "6ab71e211cb34e3bc6983d6cc33b680107ee22ec",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
     }
   ]
 }
