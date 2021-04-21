@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b2b635a6_f399b46f",
+        "filename": "docker/protoc.Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2021-04-21T18:33:58Z",
+      "side": 1,
+      "message": "torn about making this yet another config variable as it implies that things should still work if you change this via an argument and quite frankly i am not sure it will nor do i want to imply this. \n\ni am sort of in favor of keeping this inline at this point so that there is more thought when this needs to be changed, including a commit to the repo.",
+      "parentUuid": "a4de3e23_e2670ccb",
+      "range": {
+        "startLine": 49,
+        "startChar": 38,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "278fc16dfba78ca3fd23bc7b296d3ed25492d16a",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aac718c7_51ca478c",
         "filename": "docker/protoc.Dockerfile",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2021-04-21T17:59:24Z",
       "side": 1,
       "message": "Not /usr/lib/ ?",
+      "range": {
+        "startLine": 78,
+        "startChar": 47,
+        "endLine": 78,
+        "endChar": 52
+      },
+      "revId": "278fc16dfba78ca3fd23bc7b296d3ed25492d16a",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9233b33_49157c5d",
+        "filename": "docker/protoc.Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000003
+      },
+      "writtenOn": "2021-04-21T18:33:58Z",
+      "side": 1,
+      "message": "correct, not /usr/lib. tried it originally in /usr/lib, but if failed (i.e. binary didn\u0027t run), ldd was showing it wanted it in /lib",
+      "parentUuid": "aac718c7_51ca478c",
       "range": {
         "startLine": 78,
         "startChar": 47,
