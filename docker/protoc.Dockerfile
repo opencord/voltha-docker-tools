@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ARG GOLANG_VERSION
-FROM golang:$GOLANG_VERSION-alpine as build
+FROM golang:$GOLANG_VERSION-alpine3.13 as go-build
 
 ARG PROTOC_VERSION
 ARG PROTOC_SHA256SUM
@@ -23,7 +23,7 @@ ARG PROTOC_GEN_GRPC_GATEWAY_VERSION
 RUN apk add --no-cache libatomic=10.2.1_pre1-r3 musl=1.2.2-r0
 
 # download & compile this specific version of protoc-gen-go
-RUN GO111MODULE=on CGO_ENABLED=0 go get -u \
+RUN GO111MODULE=on CGO_ENABLED=0 go get -a -u \
     github.com/golang/protobuf/protoc-gen-go@v$PROTOC_GEN_GO_VERSION \
     github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v$PROTOC_GEN_GRPC_GATEWAY_VERSION \
     github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@v$PROTOC_GEN_GRPC_GATEWAY_VERSION
@@ -34,20 +34,59 @@ RUN mkdir -p /tmp/protoc3 && \
     unzip /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip -d /tmp/protoc3 && \
     chmod -R a+rx /tmp/protoc3/
 
+FROM alpine:3.13 as cpp-build
+
+# Install required packages
+RUN apk add \
+    build-base=0.5-r2 \
+    git=2.30.2-r0 \
+    cmake=3.18.4-r1 \
+    linux-headers=5.7.8-r0
+
+WORKDIR /src
+
+# Clone grpc and submodules
+RUN git clone --recurse-submodules -b v1.31.0 \
+        --depth=1 --shallow-submodules https://github.com/grpc/grpc
+
+# Create and configure make environment
+RUN mkdir -p /src/grpc/cmake/build
+WORKDIR /src/grpc/cmake/build
+RUN cmake \
+        -DgRPC_INSTALL=ON \
+        -DCMAKE_INSTALL_PREFIX=/install \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DgRPC_ABSL_PROVIDER=module \
+        -DgRPC_CARES_PROVIDER=module \
+        -DgRPC_PROTOBUF_PROVIDER=module \
+        -DgRPC_RE2_PROVIDER=module \
+        -DgRPC_SSL_PROVIDER=module \
+        -DgRPC_ZLIB_PROVIDER=module \
+        ../..
+
+# Build the cpp plugin
+RUN make grpc_cpp_plugin
 
 FROM busybox:1.31.1-glibc
 
 # dynamic libs for protoc
-COPY --from=build /usr/lib/libatomic.so.1 /usr/lib/
-COPY --from=build /lib/libc.musl-x86_64.so.1 /usr/lib/
+COPY --from=go-build /usr/lib/libatomic.so.1 /usr/lib/
+COPY --from=go-build /lib/libc.musl-x86_64.so.1 /usr/lib/
+COPY --from=cpp-build /usr/lib/libstdc++.so.6 /usr/lib/
+COPY --from=cpp-build /usr/lib/libgcc_s.so.1 /usr/lib/
+COPY --from=cpp-build /lib/ld-musl-x86_64.so.1 /usr/lib/
+COPY --from=cpp-build /lib/ld-musl-x86_64.so.1 /lib/
+
 ENV LD_LIBRARY_PATH=/usr/lib
 
 # protoc & well-known-type definitions
-COPY --from=build /tmp/protoc3/bin/* /usr/local/bin/
-COPY --from=build /tmp/protoc3/include/ /usr/local/include/
+COPY --from=go-build /tmp/protoc3/bin/* /usr/local/bin/
+COPY --from=go-build /tmp/protoc3/include/ /usr/local/include/
 
-# copy protoc-gen-go, protoc-gen-grpc-gateway, and protoc-gen-swagger
-COPY --from=build /go/bin/* /usr/local/bin/
+# copy protoc-gen-go, protoc-gen-grpc-gateway, protoc-gen-swagger,
+# and grpc_cpp_plugin
+COPY --from=go-build /go/bin/* /usr/local/bin/
+COPY --from=cpp-build /src/grpc/cmake/build/grpc_cpp_plugin /usr/local/bin
 
 WORKDIR /app
 
