@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4de3e23_e2670ccb",
+        "filename": "docker/protoc.Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2021-04-21T17:59:24Z",
+      "side": 1,
+      "message": "Should this version be passed in via a build arg?  Other dependencies\u0027 versions are (consider $PROTOC_GEN_GO_VERSION above)",
+      "range": {
+        "startLine": 49,
+        "startChar": 38,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "278fc16dfba78ca3fd23bc7b296d3ed25492d16a",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aac718c7_51ca478c",
+        "filename": "docker/protoc.Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2021-04-21T17:59:24Z",
+      "side": 1,
+      "message": "Not /usr/lib/ ?",
+      "range": {
+        "startLine": 78,
+        "startChar": 47,
+        "endLine": 78,
+        "endChar": 52
+      },
+      "revId": "278fc16dfba78ca3fd23bc7b296d3ed25492d16a",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": true
+    }
+  ]
+}
