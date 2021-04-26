@@ -34,19 +34,23 @@ RUN mkdir -p /tmp/protoc3 && \
     unzip /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip -d /tmp/protoc3 && \
     chmod -R a+rx /tmp/protoc3/
 
-FROM alpine:3.13 as cpp-build
+ARG GOLANG_VERSION
+FROM golang:$GOLANG_VERSION-alpine3.13 as cpp-build
+
+ARG PROTOC_GEN_CPP_VERSION
 
 # Install required packages
 RUN apk add --no-cache \
     build-base=0.5-r2 \
     git=2.30.2-r0 \
     cmake=3.18.4-r1 \
-    linux-headers=5.7.8-r0
+    linux-headers=5.7.8-r0 \
+    perl=5.32.0-r0
 
 WORKDIR /src
 
 # Clone grpc and submodules
-RUN git clone --recurse-submodules -b v1.31.0 \
+RUN git clone --recurse-submodules -b v${PROTOC_GEN_CPP_VERSION} \
         --depth=1 --shallow-submodules https://github.com/grpc/grpc
 
 # Create and configure make environment
