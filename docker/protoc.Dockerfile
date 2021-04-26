@@ -46,7 +46,7 @@ RUN apk add --no-cache \
 WORKDIR /src
 
 # Clone grpc and submodules
-RUN git clone --recurse-submodules -b v1.31.0 \
+RUN git clone --recurse-submodules -b v1.31.1 \
         --depth=1 --shallow-submodules https://github.com/grpc/grpc
 
 # Create and configure make environment
