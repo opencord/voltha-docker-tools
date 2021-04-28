@@ -26,7 +26,7 @@ PROTOC_VERSION                  ?= "3.7.0"
 PROTOC_SHA256SUM                ?= "a1b8ed22d6dc53c5b8680a6f1760a305b33ef471bece482e92728f00ba2a2969"
 PROTOC_GEN_GO_VERSION           ?= "1.3.2"
 PROTOC_GEN_GRPC_GATEWAY_VERSION ?= "1.14.3"
-PROTOC_GEN_CPP_VERSION          ?= "1.3.1"
+PROTOC_GEN_CPP_VERSION          ?= "1.31.1"
 
 # Docker related
 DOCKER_LABEL_VCS_DIRTY     = false
