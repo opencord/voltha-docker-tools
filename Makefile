@@ -1,4 +1,6 @@
-# Copyright 2020-present Open Networking Foundation
+# -*- makefile -*-
+# -----------------------------------------------------------------------
+# Copyright 2020-2023 Open Networking Foundation (ONF) and the ONF Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,13 +13,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# -----------------------------------------------------------------------
 
 # set default shell options
-SHELL = bash -e -o pipefail
+SHELL                           := bash -e -o pipefail
 
 ## Variables
 VERSION                         ?= $(shell cat ./VERSION)
-GO_JUNIT_REPORT_VERSION         ?= "0.9.1"
+O_JUNIT_REPORT_VERSION          ?= "0.9.1"
 GOCOVER_COBERTURA_VERSION       ?= "v0.0.0-20180217150009-aaee18c8195c"
 GOLANG_VERSION                  ?= "1.16.3"
 GOLANGCI_LINT_VERSION           ?= "1.44.2"
@@ -145,3 +148,5 @@ endif
 	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-protoc
 	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-python
 	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-onos-config-loader
+
+# [EOF]
