@@ -1,4 +1,6 @@
-# Copyright 2020-present Open Networking Foundation
+# -*- makefile -*-
+# -----------------------------------------------------------------------
+# Copyright 2020-2023 Open Networking Foundation (ONF) and the ONF Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,6 +13,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# -----------------------------------------------------------------------
 
 ARG HADOLINT_VERSION
 FROM hadolint/hadolint:v$HADOLINT_VERSION-alpine
@@ -36,3 +39,4 @@ LABEL org.label-schema.schema-version=1.0 \
       org.opencord.vcs-dirty=$org_opencord_vcs_dirty \
       org.opencord.hadolint-version=$HADOLINT_VERSION
 
+# [EOF]
