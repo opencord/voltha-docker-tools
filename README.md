@@ -47,3 +47,7 @@ Details:
 * `make build` to build containers
 * `make lint` to lint the Dockerfiles
 * `make docker-push` to push built containers to a registry
+
+## Docker Image Upgrades
+
+- [v2.6.0](docs/upgrade.md)
