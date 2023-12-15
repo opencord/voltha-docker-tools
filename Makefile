@@ -12,21 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# docker.io/hadolint/hadolint:v1.17.5-alpine
+
 # set default shell options
-SHELL = bash -e -o pipefail
+SHELL := bash -e -o pipefail
 
 ## Variables
 VERSION                         ?= $(shell cat ./VERSION)
 GO_JUNIT_REPORT_VERSION         ?= "0.9.1"
 GOCOVER_COBERTURA_VERSION       ?= "v0.0.0-20180217150009-aaee18c8195c"
-GOLANG_VERSION                  ?= "1.16.3"
+GOLANG_VERSION                  ?= "1.17.10" # orig:"1.16.3" #     # "1.16.3" - 1.17.13 - 1.21.5
 GOLANGCI_LINT_VERSION           ?= "1.44.2"
 HADOLINT_VERSION                ?= "1.17.5"
 PROTOC_VERSION                  ?= "3.7.0"
 PROTOC_SHA256SUM                ?= "a1b8ed22d6dc53c5b8680a6f1760a305b33ef471bece482e92728f00ba2a2969"
 PROTOC_GEN_GO_VERSION           ?= "1.3.2"
 PROTOC_GEN_GRPC_GATEWAY_VERSION ?= "1.14.3"
-PROTOC_GEN_CPP_VERSION          ?= "1.31.1"
+PROTOC_GEN_CPP_VERSION          ?= "1.32.0"
 
 # Docker related
 DOCKER_LABEL_VCS_DIRTY     = false

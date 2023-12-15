@@ -13,18 +13,39 @@
 # limitations under the License.
 
 ARG GOLANG_VERSION
-FROM golang:$GOLANG_VERSION-alpine3.13 as go-build
+# FROM golang:$GOLANG_VERSION-alpine3.13 as go-build
+FROM golang:$GOLANG_VERSION-alpine3.16 as go-build
 
 ARG PROTOC_VERSION
 ARG PROTOC_SHA256SUM
 ARG PROTOC_GEN_GO_VERSION
 ARG PROTOC_GEN_GRPC_GATEWAY_VERSION
 
-RUN apk add --no-cache libatomic=10.2.1_pre1-r3 musl=1.2.2-r0
+# RUN apk add --no-cache libatomic=10.2.1_pre1-r3 musl=1.2.2-r0
+RUN apk add --no-cache libatomic=11.2.1_git20220219-r2 musl=1.2.3-r0
 
+# Install required packages
+RUN apk add --no-cache \
+    git=2.36.6-r0
+
+# -----------------------------------------------------------------------
 # download & compile this specific version of protoc-gen-go
-RUN GO111MODULE=on CGO_ENABLED=0 go get -a -u \
-    github.com/golang/protobuf/protoc-gen-go@v$PROTOC_GEN_GO_VERSION \
+# -----------------------------------------------------------------------
+#  o go install split to avoid @version syntax induced error:
+#    protoc-gen-grpc-gateway@v1.14.3: all arguments must have the same version (@v1.3.2)
+#  o GO111MODULE and go get replaced per:
+#    https://maelvls.dev/go111module-everywhere/
+# -----------------------------------------------------------------------
+# [SEE ALSO]
+#   https://pkg.go.dev/cmd/go#hdr-Compile_and_install_packages_and_dependencies
+# -----------------------------------------------------------------------
+# [TODO]
+#   module github.com/golang/protobuf is deprecated: Use the "google.golang.org/protobuf" module instead.
+# -----------------------------------------------------------------------
+RUN CGO_ENABLED=0 go install -a \
+    github.com/golang/protobuf/protoc-gen-go@v$PROTOC_GEN_GO_VERSION
+
+RUN CGO_ENABLED=0 go install -a \
     github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v$PROTOC_GEN_GRPC_GATEWAY_VERSION \
     github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@v$PROTOC_GEN_GRPC_GATEWAY_VERSION
 
@@ -35,17 +56,18 @@ RUN mkdir -p /tmp/protoc3 && \
     chmod -R a+rx /tmp/protoc3/
 
 ARG GOLANG_VERSION
-FROM golang:$GOLANG_VERSION-alpine3.13 as cpp-build
+# FROM golang:$GOLANG_VERSION-alpine3.13 as cpp-build
+FROM golang:$GOLANG_VERSION-alpine3.16 as cpp-build
 
 ARG PROTOC_GEN_CPP_VERSION
 
 # Install required packages
 RUN apk add --no-cache \
-    build-base=0.5-r2 \
-    git=2.30.2-r0 \
-    cmake=3.18.4-r1 \
-    linux-headers=5.7.8-r0 \
-    perl=5.32.0-r0
+    build-base=0.5-r3 \
+    git=2.36.6-r0 \
+    cmake=3.23.5-r0 \
+    linux-headers=5.16.7-r1 \
+    perl=5.34.2-r0
 
 WORKDIR /src
 

@@ -15,7 +15,10 @@
 ARG GOLANG_VERSION
 FROM golang:$GOLANG_VERSION-alpine
 
-RUN apk add --no-cache git=2.30.2-r0 && \
+# https://dl-cdn.alpinelinux.org/alpine/v3.16/main/x86_64/
+
+# 2.30.2 -> 2.36.6
+RUN apk add --no-cache git=2.36.6-r0 && \
     mkdir -m 777 /.cache /go/pkg
 
 ENV GO111MODULE=on CGO_ENABLED=0
