@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6641395c_a1be5021",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000948
+      },
+      "writtenOn": "2023-12-19T21:58:12Z",
+      "side": 1,
+      "message": "recheck\n\nOk... regress back to shell cat for file IO:\n  VERSION ?\u003d $(shell cat ./VERSION)\n\nShiny new $(file op path) function must not be available in the installed version of GNU Make:\n   VERSION ?\u003d $(file \u003c ./VERSION)",
+      "revId": "c71e652680802dffa83d2ffaab8ed47e79b9756e",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388"
+    }
+  ]
+}
