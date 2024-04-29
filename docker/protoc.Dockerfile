@@ -1,4 +1,6 @@
-# Copyright 2020-present Open Networking Foundation
+# -*- dockerfile -*-
+# -----------------------------------------------------------------------
+# Copyright 2020-2024 Open Networking Foundation Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,6 +13,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# -----------------------------------------------------------------------
+# SPDX-FileCopyrightText: 2020-2024 Open Networking Foundation Contributors
+# SPDX-License-Identifier: Apache-2.0
+# -----------------------------------------------------------------------
+# Intent:
+# -----------------------------------------------------------------------
 
 ARG GOLANG_VERSION
 FROM golang:$GOLANG_VERSION-alpine3.13 as go-build
@@ -116,3 +124,5 @@ LABEL org.label-schema.schema-version=1.0 \
       org.opencord.protoc-version=$PROTOC_VERSION \
       org.opencord.protoc-gen-go-version=$PROTOC_GEN_GO_VERSION \
       org.opencord.protoc-gen-grpc-gateway-version=$PROTOC_GEN_GRPC_GATEWAY_VERSION
+
+# [EOF]
