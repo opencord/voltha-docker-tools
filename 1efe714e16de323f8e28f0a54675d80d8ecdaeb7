@@ -16,6 +16,40 @@
       "message": "recheck\n\nJobs have aged out of jenmkins history.\nRe-run for current log results\n",
       "revId": "1efe714e16de323f8e28f0a54675d80d8ecdaeb7",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a169472c_30400608",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000948
+      },
+      "writtenOn": "2024-04-29T13:29:22Z",
+      "side": 1,
+      "message": "Copyright notice has since changed with the LF transition.\nDrop \u0027(ONF) and the ONF\u0027 from string.\nAlso add SPDX tokens for programatic checking",
+      "revId": "1efe714e16de323f8e28f0a54675d80d8ecdaeb7",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290baff5_c2a8989d",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000948
+      },
+      "writtenOn": "2024-04-29T13:29:22Z",
+      "side": 1,
+      "message": "Fix this",
+      "revId": "1efe714e16de323f8e28f0a54675d80d8ecdaeb7",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388"
     }
   ]
 }
