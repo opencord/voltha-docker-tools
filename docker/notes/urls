@@ -1,0 +1,2 @@
+# Busybox statically linked to glibc
+https://stackoverflow.com/questions/67529042/what-is-the-difference-between-alpine-docker-image-and-busybox-docker-image

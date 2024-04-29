@@ -1,4 +1,6 @@
-# Copyright 2020-present Open Networking Foundation
+# -*- makefile -*-
+# -----------------------------------------------------------------------
+# Copyright 2020-2024 Open Networking Foundation Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,9 +13,32 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# -----------------------------------------------------------------------
+# SPDX-FileCopyrightText: 2020-2024 Open Networking Foundation Contributors
+# SPDX-License-Identifier: Apache-2.0
+# -----------------------------------------------------------------------
+# Intent:
+# -----------------------------------------------------------------------
 
-# set default shell options
-SHELL = bash -e -o pipefail
+##-------------------##
+##---]  GLOBALS  [---##
+##-------------------##
+ifndef .DEFAULT_GOAL
+  .DEFAULT_GOAL := help # ?= help evaluated late
+endif
+MAKECMDGOALS    ?= help
+
+$(if $(findstring disabled-joey,$(USER)),\
+   $(eval USE_LF_MK := 1)) # special snowflake
+
+##--------------------##
+##---]  INCLUDES  [---##
+##--------------------##
+ifdef USE_LF_MK
+  include lf/include.mk
+else
+  include lf/transition.mk
+endif # ifdef USE_LF_MK
 
 ## Variables
 VERSION                         ?= $(shell cat ./VERSION)
@@ -59,16 +84,23 @@ DOCKER_BUILD_ARGS ?= \
 ## runnable tool containers
 HADOLINT = ${DOCKER} run --rm --user $$(id -u):$$(id -g) -v $$PWD:/app ${IMAGENAME}:${VERSION}-hadolint hadolint
 
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 lint: docker-lint
 
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 docker-lint: hadolint
 	@echo "Linting Dockerfiles..."
 	@${HADOLINT} $(shell ls docker/*.Dockerfile)
 	@echo "Dockerfiles linted OK"
 
-
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 build: docker-build
 
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 docker-build: go-junit-report gocover-cobertura golang golangci-lint hadolint protoc python onos-config-loader
 
 go-junit-report:
@@ -145,3 +177,14 @@ endif
 	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-protoc
 	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-python
 	${DOCKER} push ${IMAGENAME}:${DOCKER_TAG}-onos-config-loader
+
+help ::
+	@printf "Usage: $(MAKE) [options] [target] ..."
+
+	@printf '  %-33.33s %s\n' 'build' 'Invoke generic lint targets'
+	@printf '  %-33.33s %s\n' 'lint'  'Invoke generic build targets'
+
+	@printf '  %-33.33s %s\n' 'docker-build' \
+	  'Lint and build targets within a docker image'
+
+# [EOF]
