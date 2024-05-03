@@ -1,4 +1,6 @@
-# Copyright 2020-present Open Networking Foundation
+# -*- makefile -*-
+# -----------------------------------------------------------------------
+# Copyright 2020-2024 Open Networking Foundation Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,9 +13,32 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+# -----------------------------------------------------------------------
+# SPDX-FileCopyrightText: 2020-2024 Open Networking Foundation Contributors
+# SPDX-License-Identifier: Apache-2.0
+# -----------------------------------------------------------------------
+# Intent:
+# -----------------------------------------------------------------------
 
-# set default shell options
-SHELL = bash -e -o pipefail
+##-------------------##
+##---]  GLOBALS  [---##
+##-------------------##
+ifndef .DEFAULT_GOAL
+  .DEFAULT_GOAL := help # ?= help evaluated late
+endif
+MAKECMDGOALS    ?= help
+
+$(if $(findstring disabled-joey,$(USER)),\
+   $(eval USE_LF_MK := 1)) # special snowflake
+
+##--------------------##
+##---]  INCLUDES  [---##
+##--------------------##
+ifdef USE_LF_MK
+  include lf/include.mk
+else
+  include lf/transition.mk
+endif # ifdef USE_LF_MK
 
 ## Variables
 VERSION                         ?= $(shell cat ./VERSION)
