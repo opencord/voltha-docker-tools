@@ -20,16 +20,15 @@ ARG PROTOC_SHA256SUM
 ARG PROTOC_GEN_GO_VERSION
 ARG PROTOC_GEN_GRPC_GATEWAY_VERSION
 
-RUN apk add --no-cache libatomic=10.2.1_pre1-r3 musl=1.2.2-r0
+RUN apk add --no-cache libatomic=10.2.1_pre1-r3 musl=1.2.2-r0 git=2.30.6-r0 && \
+    mkdir -m 777 /.cache /go/pkg
 
 # download & compile this specific version of protoc-gen-go
-RUN GO111MODULE=on CGO_ENABLED=0 go get -a -u \
-    github.com/golang/protobuf/protoc-gen-go@v$PROTOC_GEN_GO_VERSION \
-    github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v$PROTOC_GEN_GRPC_GATEWAY_VERSION \
-    github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@v$PROTOC_GEN_GRPC_GATEWAY_VERSION
-
-RUN mkdir -p /tmp/protoc3 && \
-    wget -O /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip https://github.com/google/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip && \
+RUN GO111MODULE=on CGO_ENABLED=0 go install github.com/golang/protobuf/protoc-gen-go@v$PROTOC_GEN_GO_VERSION && \
+    GO111MODULE=on CGO_ENABLED=0 go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v$PROTOC_GEN_GRPC_GATEWAY_VERSION && \
+    GO111MODULE=on CGO_ENABLED=0 go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@v$PROTOC_GEN_GRPC_GATEWAY_VERSION && \
+    mkdir -p /tmp/protoc3 && \
+    wget -nv -O /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip https://github.com/google/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip && \
     [ "$(sha256sum /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip)" = "${PROTOC_SHA256SUM}  /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip" ] && \
     unzip /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip -d /tmp/protoc3 && \
     chmod -R a+rx /tmp/protoc3/
@@ -41,8 +40,8 @@ ARG PROTOC_GEN_CPP_VERSION
 
 # Install required packages
 RUN apk add --no-cache \
-    build-base=0.5-r2 \
-    git=2.30.2-r0 \
+    build-base=0.5-r3 \
+    git=2.30.6-r0 \
     cmake=3.18.4-r1 \
     linux-headers=5.7.8-r0 \
     perl=5.32.0-r0
@@ -50,11 +49,16 @@ RUN apk add --no-cache \
 WORKDIR /src
 
 # Clone grpc and submodules
-RUN git clone --recurse-submodules -b v${PROTOC_GEN_CPP_VERSION} \
-        --depth=1 --shallow-submodules https://github.com/grpc/grpc
+# RUN git clone --recurse-submodules -b v${PROTOC_GEN_CPP_VERSION} --depth=1 --shallow-submodules https://github.com/grpc/grpc
+# WORKDIR /src/grpc
+# Clone the main repository without submodules
+RUN git clone -b v${PROTOC_GEN_CPP_VERSION} --depth=1 https://github.com/grpc/grpc /src/grpc
+WORKDIR /src/grpc
+RUN git config --file .gitmodules submodule.third_party/re2.url https://github.com/google/re2.git && \
+    git submodule sync && \
+    git submodule update --init --recursive --depth=1 && \
+    mkdir -p /src/grpc/cmake/build
 
-# Create and configure make environment
-RUN mkdir -p /src/grpc/cmake/build
 WORKDIR /src/grpc/cmake/build
 RUN cmake \
         -DgRPC_INSTALL=ON \
@@ -66,10 +70,8 @@ RUN cmake \
         -DgRPC_RE2_PROVIDER=module \
         -DgRPC_SSL_PROVIDER=module \
         -DgRPC_ZLIB_PROVIDER=module \
-        ../..
-
-# Build the cpp plugin
-RUN make grpc_cpp_plugin
+        ../.. && \
+    make grpc_cpp_plugin
 
 FROM busybox:1.31.1-glibc
 
