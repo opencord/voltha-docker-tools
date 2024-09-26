@@ -13,7 +13,9 @@
 # limitations under the License.
 
 ARG GOLANG_VERSION
-FROM golang:$GOLANG_VERSION-alpine3.13 as go-build
+#TO DO: import & upgrade the protobuf with go version 1.22+
+#FROM golang:$GOLANG_VERSION-alpine3.13 as go-build
+FROM golang:1.16.3-alpine3.13 as go-build
 
 ARG PROTOC_VERSION
 ARG PROTOC_SHA256SUM

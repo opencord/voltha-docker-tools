@@ -15,11 +15,12 @@
 ARG GOLANG_VERSION
 FROM golang:$GOLANG_VERSION-alpine as build
 
-RUN apk add --no-cache build-base=0.5-r2
+RUN apk add --no-cache build-base=0.5-r3 git=2.45.2-r0 && \
+mkdir -m 777 /.cache /go/pkg
 
 # download & compile this specific version of go-junit-report
 ARG GO_JUNIT_REPORT_VERSION
-RUN GO111MODULE=on CGO_ENABLED=0 go get -u -ldflags "-linkmode external -extldflags -static" github.com/jstemmer/go-junit-report@v$GO_JUNIT_REPORT_VERSION
+RUN GO111MODULE=on CGO_ENABLED=0 go install -ldflags "-extldflags -static" github.com/jstemmer/go-junit-report@v$GO_JUNIT_REPORT_VERSION
 
 FROM busybox:1.31.1
 

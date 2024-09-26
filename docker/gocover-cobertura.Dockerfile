@@ -14,11 +14,11 @@
 ARG GOLANG_VERSION
 FROM golang:$GOLANG_VERSION-alpine as build
 
-RUN apk add --no-cache build-base=0.5-r2
+RUN apk add --no-cache build-base=0.5-r3
 
 # download & compile this specific version of gocover-cobertura
 ARG GOCOVER_COBERTURA_VERSION
-RUN GO111MODULE=on CGO_ENABLED=0 go get -u -ldflags "-linkmode external -extldflags -static" github.com/t-yuki/gocover-cobertura@$GOCOVER_COBERTURA_VERSION
+RUN GO111MODULE=on CGO_ENABLED=0 go install -ldflags "-extldflags -static" github.com/t-yuki/gocover-cobertura@$GOCOVER_COBERTURA_VERSION
 
 FROM golang:$GOLANG_VERSION-alpine
 
