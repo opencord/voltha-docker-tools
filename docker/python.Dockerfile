@@ -12,9 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM python:3.8.5-alpine
+FROM python:3.10.15-alpine
 
-RUN pip install -I tox==3.19.0 && pip install -I bandit==1.6.2
+RUN pip install --upgrade pip
+RUN pip install -I tox==4.20.0 && pip install -I bandit==1.7.10
 
 WORKDIR /app
 
