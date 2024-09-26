@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM python:3.8.5-alpine
+FROM python:3.11.10-alpine
 
-RUN pip install -I tox==3.19.0 && pip install -I bandit==1.6.2
+RUN pip install --no-cache-dir --upgrade pip==24.2 && pip install --no-cache-dir -I tox==4.20.0 && pip --no-cache-dir install -I bandit==1.7.10
 
 WORKDIR /app
 
