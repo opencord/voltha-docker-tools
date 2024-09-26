@@ -17,16 +17,16 @@ SHELL = bash -e -o pipefail
 
 ## Variables
 VERSION                         ?= $(shell cat ./VERSION)
-GO_JUNIT_REPORT_VERSION         ?= "0.9.1"
+GO_JUNIT_REPORT_VERSION         ?= "1.0.0"
 GOCOVER_COBERTURA_VERSION       ?= "v0.0.0-20180217150009-aaee18c8195c"
-GOLANG_VERSION                  ?= "1.16.3"
-GOLANGCI_LINT_VERSION           ?= "1.44.2"
-HADOLINT_VERSION                ?= "1.17.5"
-PROTOC_VERSION                  ?= "3.7.0"
-PROTOC_SHA256SUM                ?= "a1b8ed22d6dc53c5b8680a6f1760a305b33ef471bece482e92728f00ba2a2969"
-PROTOC_GEN_GO_VERSION           ?= "1.3.2"
-PROTOC_GEN_GRPC_GATEWAY_VERSION ?= "1.14.3"
-PROTOC_GEN_CPP_VERSION          ?= "1.31.1"
+GOLANG_VERSION                  ?= "1.22.6"
+GOLANGCI_LINT_VERSION           ?= "1.61.0"
+HADOLINT_VERSION                ?= "2.12.0"
+PROTOC_VERSION                  ?= "28.2"
+PROTOC_SHA256SUM                ?= "2febfd42b59ce93a28eb789019a470a3dd0449619bc04f84dad1333da261dec1"
+PROTOC_GEN_GO_VERSION           ?= "1.5.4"
+PROTOC_GEN_GRPC_GATEWAY_VERSION ?= "1.16.0"
+PROTOC_GEN_CPP_VERSION          ?= "1.66.1"
 
 # Docker related
 DOCKER_LABEL_VCS_DIRTY     = false
