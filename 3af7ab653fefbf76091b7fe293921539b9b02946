@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb47a5b0_9b317a34",
+        "filename": "docker/python.Dockerfile",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001013
+      },
+      "writtenOn": "2024-10-01T21:44:41Z",
+      "side": 1,
+      "message": "Is it possible to bump this up to 3.12? That\u0027s currently the target version in other places in the code where python updates are being made.",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "3af7ab653fefbf76091b7fe293921539b9b02946",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388"
+    }
+  ]
+}
