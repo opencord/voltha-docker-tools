@@ -22,6 +22,30 @@
       },
       "revId": "3af7ab653fefbf76091b7fe293921539b9b02946",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee098295_ccdc5d0a",
+        "filename": "docker/python.Dockerfile",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000971
+      },
+      "writtenOn": "2024-10-03T04:41:45Z",
+      "side": 1,
+      "message": "Updated the python version. Thanks!!",
+      "parentUuid": "fb47a5b0_9b317a34",
+      "range": {
+        "startLine": 15,
+        "startChar": 14,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "3af7ab653fefbf76091b7fe293921539b9b02946",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388"
     }
   ]
 }
