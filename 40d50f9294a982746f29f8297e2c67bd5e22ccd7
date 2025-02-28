@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72d06333_874e012c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000971
+      },
+      "writtenOn": "2025-02-28T10:53:27Z",
+      "side": 1,
+      "message": "\u003e Patch Set 1: Verified+1\n\u003e \n\u003e Build Successful \n\u003e \n\u003e https://jenkins.opencord.org/job/verify_voltha-docker-tools_licensed/69/ : SUCCESS\n\u003e \n\u003e https://jenkins.opencord.org/job/verify_voltha-docker-tools_unit-test/70/ : SUCCESS\n\nrecheck",
+      "revId": "40d50f9294a982746f29f8297e2c67bd5e22ccd7",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388"
+    }
+  ]
+}
