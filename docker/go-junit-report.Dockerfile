@@ -15,7 +15,7 @@
 ARG GOLANG_VERSION
 FROM golang:$GOLANG_VERSION-alpine as build
 
-RUN apk add --no-cache build-base=0.5-r3 git=2.45.3-r0 && \
+RUN apk add --no-cache build-base=0.5-r3 git=2.47.2-r0 && \
 mkdir -m 777 /.cache /go/pkg
 
 # download & compile this specific version of go-junit-report
