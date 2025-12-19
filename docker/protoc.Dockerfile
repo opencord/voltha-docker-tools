@@ -13,38 +13,40 @@
 # limitations under the License.
 
 ARG GOLANG_VERSION
-FROM golang:$GOLANG_VERSION-alpine3.13 as go-build
+FROM golang:$GOLANG_VERSION-alpine as go-build
 
 ARG PROTOC_VERSION
 ARG PROTOC_SHA256SUM
 ARG PROTOC_GEN_GO_VERSION
+ARG PROTOC_GEN_GO_GRPC_VERSION
 ARG PROTOC_GEN_GRPC_GATEWAY_VERSION
 
-RUN apk add --no-cache libatomic=10.2.1_pre1-r3 musl=1.2.2-r0 git=2.30.6-r0 && \
+RUN apk add --no-cache libatomic=14.2.0-r6 musl=1.2.5-r10 git=2.49.1-r0 && \
     mkdir -m 777 /.cache /go/pkg
 
 # download & compile this specific version of protoc-gen-go
-RUN GO111MODULE=on CGO_ENABLED=0 go install github.com/golang/protobuf/protoc-gen-go@v$PROTOC_GEN_GO_VERSION && \
+RUN GO111MODULE=on CGO_ENABLED=0 go install google.golang.org/protobuf/cmd/protoc-gen-go@v$PROTOC_GEN_GO_VERSION && \
+    GO111MODULE=on CGO_ENABLED=0 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v$PROTOC_GEN_GO_GRPC_VERSION && \
     GO111MODULE=on CGO_ENABLED=0 go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v$PROTOC_GEN_GRPC_GATEWAY_VERSION && \
     GO111MODULE=on CGO_ENABLED=0 go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@v$PROTOC_GEN_GRPC_GATEWAY_VERSION && \
     mkdir -p /tmp/protoc3 && \
-    wget -nv -O /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip https://github.com/google/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip && \
+    wget -nv -O /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip && \
     [ "$(sha256sum /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip)" = "${PROTOC_SHA256SUM}  /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip" ] && \
     unzip /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip -d /tmp/protoc3 && \
     chmod -R a+rx /tmp/protoc3/
 
 ARG GOLANG_VERSION
-FROM golang:$GOLANG_VERSION-alpine3.13 as cpp-build
+FROM golang:$GOLANG_VERSION-alpine as cpp-build
 
 ARG PROTOC_GEN_CPP_VERSION
 
 # Install required packages
 RUN apk add --no-cache \
     build-base=0.5-r3 \
-    git=2.30.6-r0 \
-    cmake=3.18.4-r1 \
-    linux-headers=5.7.8-r0 \
-    perl=5.32.0-r0
+    git=2.49.1-r0 \
+    cmake=3.31.7-r1 \
+    linux-headers=6.14.2-r0 \
+    perl=5.40.3-r0
 
 WORKDIR /src
 
@@ -89,7 +91,7 @@ ENV LD_LIBRARY_PATH=/usr/lib
 COPY --from=go-build /tmp/protoc3/bin/* /usr/local/bin/
 COPY --from=go-build /tmp/protoc3/include/ /usr/local/include/
 
-# copy protoc-gen-go, protoc-gen-grpc-gateway, protoc-gen-swagger,
+# copy protoc-gen-go, protoc-gen-go-grpc, protoc-gen-grpc-gateway, protoc-gen-swagger,
 # and grpc_cpp_plugin
 COPY --from=go-build /go/bin/* /usr/local/bin/
 COPY --from=cpp-build /src/grpc/cmake/build/grpc_cpp_plugin /usr/local/bin
@@ -105,6 +107,7 @@ ARG org_opencord_vcs_commit_date=unknown
 ARG org_opencord_vcs_dirty=unknown
 ARG PROTOC_VERSION=unknown
 ARG PROTOC_GEN_GO_VERSION=unknown
+ARG PROTOC_GEN_GO_GRPC_VERSION=unknown
 ARG PROTOC_GEN_GRPC_GATEWAY_VERSION=unknown
 
 LABEL org.label-schema.schema-version=1.0 \
@@ -117,4 +120,5 @@ LABEL org.label-schema.schema-version=1.0 \
       org.opencord.vcs-dirty=$org_opencord_vcs_dirty \
       org.opencord.protoc-version=$PROTOC_VERSION \
       org.opencord.protoc-gen-go-version=$PROTOC_GEN_GO_VERSION \
+      org.opencord.protoc-gen-go-grpc-version=$PROTOC_GEN_GO_GRPC_VERSION \
       org.opencord.protoc-gen-grpc-gateway-version=$PROTOC_GEN_GRPC_GATEWAY_VERSION
