@@ -13,10 +13,10 @@
 # limitations under the License.
 
 ARG GOLANG_VERSION
-FROM golang:$GOLANG_VERSION-alpine as build
+FROM golang:$GOLANG_VERSION-alpine AS build
 
-RUN apk add --no-cache build-base=0.5-r3 git=2.49.1-r0 && \
-mkdir -m 777 /.cache /go/pkg
+RUN apk add --no-cache build-base=0.5-r3 git=2.52.0-r0 && \
+      mkdir -m 777 /.cache /go/pkg
 
 # download & compile this specific version of go-junit-report
 ARG GO_JUNIT_REPORT_VERSION

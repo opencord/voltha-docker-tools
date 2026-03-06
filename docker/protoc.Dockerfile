@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ARG GOLANG_VERSION
-FROM golang:$GOLANG_VERSION-alpine as go-build
+FROM golang:$GOLANG_VERSION-alpine AS go-build
 
 ARG PROTOC_VERSION
 ARG PROTOC_SHA256SUM
@@ -21,14 +21,13 @@ ARG PROTOC_GEN_GO_VERSION
 ARG PROTOC_GEN_GO_GRPC_VERSION
 ARG PROTOC_GEN_GRPC_GATEWAY_VERSION
 
-RUN apk add --no-cache libatomic=14.2.0-r6 musl=1.2.5-r10 git=2.49.1-r0 && \
+RUN apk add --no-cache libatomic=15.2.0-r2 musl=1.2.5-r21 git=2.52.0-r0 && \
     mkdir -m 777 /.cache /go/pkg
 
 # download & compile this specific version of protoc-gen-go
 RUN GO111MODULE=on CGO_ENABLED=0 go install google.golang.org/protobuf/cmd/protoc-gen-go@v$PROTOC_GEN_GO_VERSION && \
     GO111MODULE=on CGO_ENABLED=0 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v$PROTOC_GEN_GO_GRPC_VERSION && \
-    GO111MODULE=on CGO_ENABLED=0 go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v$PROTOC_GEN_GRPC_GATEWAY_VERSION && \
-    GO111MODULE=on CGO_ENABLED=0 go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@v$PROTOC_GEN_GRPC_GATEWAY_VERSION && \
+    GO111MODULE=on CGO_ENABLED=0 go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@v$PROTOC_GEN_GRPC_GATEWAY_VERSION && \
     mkdir -p /tmp/protoc3 && \
     wget -nv -O /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip && \
     [ "$(sha256sum /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip)" = "${PROTOC_SHA256SUM}  /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip" ] && \
@@ -36,17 +35,17 @@ RUN GO111MODULE=on CGO_ENABLED=0 go install google.golang.org/protobuf/cmd/proto
     chmod -R a+rx /tmp/protoc3/
 
 ARG GOLANG_VERSION
-FROM golang:$GOLANG_VERSION-alpine as cpp-build
+FROM golang:$GOLANG_VERSION-alpine AS cpp-build
 
 ARG PROTOC_GEN_CPP_VERSION
 
 # Install required packages
 RUN apk add --no-cache \
     build-base=0.5-r3 \
-    git=2.49.1-r0 \
-    cmake=3.31.7-r1 \
-    linux-headers=6.14.2-r0 \
-    perl=5.40.3-r0
+    git=2.52.0-r0 \
+    cmake=4.1.3-r0 \
+    linux-headers=6.16.12-r0 \
+    perl=5.42.0-r0
 
 WORKDIR /src
 
