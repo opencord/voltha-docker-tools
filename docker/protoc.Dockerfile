@@ -45,7 +45,7 @@ RUN apk add --no-cache \
     git=2.52.0-r0 \
     cmake=4.1.3-r0 \
     linux-headers=6.16.12-r0 \
-    perl=5.42.0-r0
+    perl=5.42.2-r0
 
 WORKDIR /src
 
