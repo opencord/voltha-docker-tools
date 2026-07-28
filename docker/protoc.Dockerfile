@@ -28,6 +28,7 @@ RUN apk add --no-cache libatomic=15.2.0-r2 musl=1.2.5-r21 git=2.52.0-r0 && \
 RUN GO111MODULE=on CGO_ENABLED=0 go install google.golang.org/protobuf/cmd/protoc-gen-go@v$PROTOC_GEN_GO_VERSION && \
     GO111MODULE=on CGO_ENABLED=0 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v$PROTOC_GEN_GO_GRPC_VERSION && \
     GO111MODULE=on CGO_ENABLED=0 go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@v$PROTOC_GEN_GRPC_GATEWAY_VERSION && \
+    GO111MODULE=on CGO_ENABLED=0 go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@v$PROTOC_GEN_GRPC_GATEWAY_VERSION && \
     mkdir -p /tmp/protoc3 && \
     wget -nv -O /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip && \
     [ "$(sha256sum /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip)" = "${PROTOC_SHA256SUM}  /tmp/protoc-${PROTOC_VERSION}-linux-x86_64.zip" ] && \
@@ -90,7 +91,7 @@ ENV LD_LIBRARY_PATH=/usr/lib
 COPY --from=go-build /tmp/protoc3/bin/* /usr/local/bin/
 COPY --from=go-build /tmp/protoc3/include/ /usr/local/include/
 
-# copy protoc-gen-go, protoc-gen-go-grpc, protoc-gen-grpc-gateway, protoc-gen-swagger,
+# copy protoc-gen-go, protoc-gen-go-grpc, protoc-gen-grpc-gateway, protoc-gen-openapiv2,
 # and grpc_cpp_plugin
 COPY --from=go-build /go/bin/* /usr/local/bin/
 COPY --from=cpp-build /src/grpc/cmake/build/grpc_cpp_plugin /usr/local/bin
